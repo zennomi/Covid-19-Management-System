@@ -27,6 +27,7 @@ const TestCovid = require('./models/testcovid.model');
 const User = require('./models/user.model');
 
 const nhanKhauRoutes = require('./routes/nhankhau.route');
+const khaiBaoRoutes = require('./routes/khaibao.route');
 
 const app = express();
 
@@ -47,8 +48,20 @@ app.use(session({
 
 app.use(require('express-flash')());
 
+
+app.route('/api/nhan-khau/')
+  .get(async (req, res) => {
+    let nhanKhau;
+    try {
+      nhanKhau = await NhanKhau.findOne({ soCCCD: req.query.soCCCD });
+      if (!nhanKhau) throw new Error("Couldn't find any nhanKhau matching soCCCD");
+    } catch (err) {
+      return res.status(404).json({ msg: err });
+    }
+    res.json({nhanKhau});
+  })
+
 app.use((req, res, next) => {
-  console.log(req.cookies.isLogged);
   // redirect when not logged yet
   if (!req.cookies.isLogged && req.path != '/auth/login' && req.path != '/') {
     return res.redirect('/');
@@ -58,14 +71,11 @@ app.use((req, res, next) => {
 })
 
 app.use('/nhan-khau', nhanKhauRoutes);
+app.use('/khai-bao', khaiBaoRoutes);
 
 app.get('/', (req, res) => {
   res.render('login');
 });
-
-app.get('/dich-te', (req, res) => {
-  res.render('dichte/index');
-})
 
 app.get('/cach-ly', (req, res) => {
   res.render('cachly/index');
@@ -107,18 +117,6 @@ app.get('/dashboard', (req, res) => {
   res.render('dashboard');
 })
 
-app.route('/nhankhau/:soCCCD')
-  .get(async (req, res) => {
-    let nhankhau;
-    try {
-      nhankhau = NhanKhau.findOne({ soCCCD: req.params.soCCCD })
-      if (!nhankhau) throw new Error("Couldn't find any nhankhau matching soCCCD");
-    } catch (err) {
-      return res.status(404).json({ msg: err });
-    }
-    res.json(nhankhau);
-  })
-
-app.listen(process.env.PORT, () => {
-  console.log('server started');
+app.listen(port, () => {
+  console.log('server started at port ' + port);
 });

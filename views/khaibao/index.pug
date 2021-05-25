@@ -1,0 +1,37 @@
+extends ../layouts/common.pug
+
+block content 
+    form.mb-2
+        button.sbutton.btn.btn-tung.align-middle.me-2 Tìm kiếm
+        input.me-2.sinput.align-middle.form-control.d-inline(type='text' onkeyup="searchTable(this, 'nhanKhauTable')")
+        a.sbutton.btn.btn-tung(href="/khai-bao/them-moi") Thêm khai báo mới
+    .table-responsive.px-5
+        table.table.text-white#nhanKhauTable
+            tr.header.text-center
+                th Số CCCD/CMT
+                th Họ và tên
+                th Ngày sinh
+                th Giới tính
+                th Địa chỉ
+                th Ngày khai
+                th Vùng dịch
+                th Tiếp xúc Covid
+                th Triệu chứng
+                th Bệnh nền
+                th Thao tác
+            each kb in khaiBaos
+                tr.info
+                    td.align-middle= kb.nhanKhauId.soCCCD
+                    td.align-middle= kb.nhanKhauId.hoVaTen
+                    td.align-middle= kb.nhanKhauId.namSinh.toISOString().slice(0,10)
+                    td.align-middle= kb.nhanKhauId.gioiTinh
+                    td.align-middle= kb.nhanKhauId.diaChi
+                    td.align-middle= kb.ngayKhaiBao.toISOString().slice(0,10)
+                    td.align-middle= kb.vungDich.join("; ")
+                    td.align-middle= kb.tiepXuc.join("; ")
+                    td.align-middle= kb.bieuHien.join("; ")
+                    td.align-middle= kb.benhNen.join("; ")
+                    td.align-middle.d-flex.justify-content-around
+                        a.d-block.btn.btn-secondary.me-1(href="/khai-bao/"+kb._id+"/cap-nhat") Sửa
+                        a.d-block.btn.btn-secondary.me-1(href="/khai-bao/"+kb._id+"/xoa") Xoá
+    script(src="/js/searching-table.js") 

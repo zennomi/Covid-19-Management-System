@@ -1,0 +1,108 @@
+extends ../layouts/common.pug
+
+block stylesheet 
+    link(rel="stylesheet", href="/css/nhankhau/create.css")
+
+block content
+    .tile.d-block.mb-2
+        h2 Khai báo thông tin dịch tễ
+    form.d-flex.justify-content-around.mx-3.mb-3.formpage.p-3(action="/khai-bao/"+khaiBao._id+"/cap-nhat" method="POST")
+        div
+            .form-div.mb-1
+                label.flabel.mb-1(for='name') Họ và tên
+                input.form-control(type='text' name='hoVaTen' value=khaiBao.nhanKhauId.hoVaTen disabled)
+            .form-div.mb-1
+                label.flabel.mb-1(for='cmt') Số CMT/CCCD
+                input#soCCCDInput.form-control(type='text' name='soCCCD' value=khaiBao.nhanKhauId.soCCCD required disabled)
+            .form-div.mb-1
+                label.flabel.mb-1(for='birth') Ngày sinh
+                input.form-control(type='date' name='namSinh' value=khaiBao.nhanKhauId.namSinh.toISOString().slice(0,10) disabled)
+            .form-div.mb-1
+                label.flabel.mb-1(for='birth') Địa chỉ
+                input.form-control(type='text' name='diaChi' value=khaiBao.nhanKhauId.diaChi disabled)
+        div
+            .form-div.mb-1
+                label.flabel.mb-1(for='email') Mã hộ khẩu
+                input.form-control(type='text' name='maHoKhau' value=khaiBao.nhanKhauId.maHoKhau disabled)
+            .form-div.mb-1
+            .form-div.mb-1
+                label.d-block.flabel.mb-1.text-center(for='kb') -	Khai báo dịch tễ    -
+            .form-div.mb-1
+                label.flabel.mb-1(for='kdate') Ngày khai
+                input.form-control(type='date' name='ngayKhaiBao' value=khaiBao.ngayKhaiBao.toISOString().slice(0,10) required)
+            .form-div.mb-1
+                label.flabel1.mb-1(for='covtokoro') Đi qua vùng dịch trong vòng 21 ngày?
+                input.form-control#covtokoro(type="text", name="vungDich" value=khaiBao.vungDich.join(";") placeholder="Địa điểm ngăn cách bởi dấu chấm phẩy")
+            .form-div.mb-1
+                label.flabel1.mb-1(for='covhito') Tiếp xúc bệnh nhân COVID trong vòng 21 ngày?
+                input.form-control#covhito(type="text", name="tiepXuc" value=khaiBao.tiepXuc.join(";") placeholder="CMT/CCCD ngăn cách bởi dấu chấm phẩy")
+        .div
+            .symptom.p-2.mb-2
+                .opti
+                    p Trong 21 ngày qua anh/chị có dấu hiệu nào?
+                .opt
+                    .miniop
+                        input.checkbox(type='checkbox' id='b1' name="bieuHien[]" value="Khó thở" checked=khaiBao.bieuHien.indexOf("Khó thở") > -1)
+                        label(for='b1') Khó thở
+                    .miniop
+                        input.checkbox(type='checkbox' id='b2' name="bieuHien[]" value="Buồn nôn"  checked=khaiBao.bieuHien.indexOf("Buồn nôn") > -1)
+                        label(for='b2') Buồn nôn
+                    .miniop
+                        input.checkbox(type='checkbox' id='b3' name="bieuHien[]" value="Sốt" checked=khaiBao.bieuHien.indexOf("Sốt") > -1)
+                        label(for='b3') Sốt
+                .opt
+                    .miniop
+                        input.checkbox(type='checkbox' id='b4' name="bieuHien[]" value="Ho" checked=khaiBao.bieuHien.indexOf("Ho") > -1)
+                        label(for='b4') Ho
+                    .miniop
+                        input.checkbox(type='checkbox' id='b5' name="bieuHien[]" value="Đau họng" checked=khaiBao.bieuHien.indexOf("Đau họng") > -1)
+                        label(for='b5') Đau họng
+                    .miniop
+                        input.checkbox(type='checkbox' id='b6' name="bieuHien[]" value="Xuất huyết ngoài da" checked=khaiBao.bieuHien.indexOf("Xuất huyết ngoài da") > -1)
+                        label(for='b6') Xuất huyết ngoài da
+                .opt
+                    .miniop
+                        input.checkbox(type='checkbox' id='b7' name="bieuHien[]" value="Tiêu chảy" checked=khaiBao.bieuHien.indexOf("Tiêu chảy") > -1)
+                        label(for='b7') Tiêu chảy
+                    .miniop
+                        input.checkbox(type='checkbox' id='b8' name="bieuHien[]" value="Viêm phổi" checked=khaiBao.bieuHien.indexOf("Viêm phổi") > -1)
+                        label(for='b8') Viêm phổi
+                    .miniop
+                        input.checkbox(type='checkbox' id='b9' name="bieuHien[]" value="Hay mệt mỏi" checked=khaiBao.bieuHien.indexOf("Hay mệt mỏi") > -1)
+                        label(for='b9') Hay mệt mỏi
+            .symptom.p-2.mb-2
+                .opti
+                    p Anh/chị có đang mắc bệnh nền nào?
+                .opt
+                    .miniop
+                        input.checkbox(type='checkbox' id='a1' name="benhNen[]" value="Gan man tĩnh" checked=khaiBao.benhNen.indexOf("Gan man tĩnh") > -1)
+                        label(for='a1') Gan man tĩnh
+                    .miniop
+                        input.checkbox(type='checkbox' id='a2' name="benhNen[]" value="Thận mãn tính" checked=khaiBao.benhNen.indexOf("Thận mãn tính") > -1)
+                        label(for='a2') Thận mãn tính
+                    .miniop
+                        input.checkbox(type='checkbox' id='a3' name="benhNen[]" value="HIV/AIDS" checked=khaiBao.benhNen.indexOf("HIV/AIDS") > -1)
+                        label(for='a3') HIV/AIDS
+                .opt
+                    .miniop
+                        input.checkbox(type='checkbox' id='a4' name="benhNen[]" value="Thiếu máu" checked=khaiBao.benhNen.indexOf("Thiếu máu") > -1)
+                        label(for='a4') Thiếu máu
+                    .miniop
+                        input.checkbox(type='checkbox' id='a5' name="benhNen[]" value="Tim mạch" checked=khaiBao.benhNen.indexOf("Tim mạch") > -1)
+                        label(for='a5') Tim mạch
+                    .miniop
+                        input.checkbox(type='checkbox' id='a6' name="benhNen[]" value="Tiểu đường" checked=khaiBao.benhNen.indexOf("Tiểu đường") > -1)
+                        label(for='a6') Tiểu đường
+                .opt
+                    .miniop
+                        input.checkbox(type='checkbox' id='a7' name="benhNen[]" value="Ung thư" checked=khaiBao.benhNen.indexOf("Ung thư") > -1)
+                        label(for='a7') Ung thư
+                    .miniop
+                        input.checkbox(type='checkbox' id='a8' name="benhNen[]" value="Cao huyết áp" checked=khaiBao.benhNen.indexOf("Cao huyết áp") > -1)
+                        label(for='a8') Cao huyết áp
+                    //- .miniop
+                    //-     input.checkbox(type='checkbox' id='a9' name="benhNen[]" value="Khác")
+                    //-     label(for='a9') Khác
+            .subm.d-flex.justify-content-around
+                button#submitBtn.btn.btn-tung(type='submit') Lưu
+                a.btn.btn-tung(href='/khai-bao') Trở về

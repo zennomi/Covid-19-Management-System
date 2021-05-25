@@ -2,8 +2,8 @@ extends ../layouts/common.pug
 
 block content
     form.mb-2
-        input.me-2.sinput.align-middle.form-control.d-inline(type='text')
         button.sbutton.btn.btn-tung.align-middle.me-2 Tìm kiếm
+        input.me-2.sinput.align-middle.form-control.d-inline(type='text' onkeyup="searchTable(this, 'nhanKhauTable')")
         a.sbutton.btn.btn-tung(href="/nhan-khau/them-moi") Thêm nhân khẩu mới
     //- .subfunc
     //-     ul
@@ -16,7 +16,7 @@ block content
     //-         li.shadow.show
     //-             a.btn.btn-tung(href="/nhan-khau") Hiển thị tất cả
     .px-3
-        table.table.text-white
+        table.table.text-white#nhanKhauTable
             tr.header.text-center
                 th Mã hộ khẩu
                 th Số CMND
@@ -35,7 +35,7 @@ block content
                     td= nhanKhau.gioiTinh
                     td= nhanKhau.diaChi
                     td= nhanKhau.soDienThoai
-                    td
-                        a.btn.btn-secondary.me-1(href="/nhan-khau/"+nhanKhau._id+"/chi-tiet") Xem
-                        a.btn.btn-secondary.me-1(href="/nhan-khau/"+nhanKhau._id+"/cap-nhat") Sửa
-                        a.btn.btn-secondary.me-1(href="/nhan-khau/"+nhanKhau._id+"/xoa") Xoá
+                    td.d-flex.justify-content-around
+                        a.d-block.btn.btn-secondary.me-1(href="/nhan-khau/"+nhanKhau._id+"/cap-nhat") Sửa
+                        a.d-block.btn.btn-secondary.me-1(href="/nhan-khau/"+nhanKhau._id+"/xoa") Xoá
+    script(src="/js/searching-table.js") 

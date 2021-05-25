@@ -168,8 +168,7 @@ table {
 	border: 2px solid white;
 }
 .info {
-	height: 25px;
-	line-height: 25px;
+	/* height: 25px; */
 	border: 1px solid white;
 	text-align: left;
 	background: rgba(85, 86, 94, 0.7);

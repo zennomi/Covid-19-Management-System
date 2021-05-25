@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const controller = require('../controllers/nhankhau.controller');
+const controller = require('../controllers/khaibao.controller');
 
 router.get('/', controller.index);
 router.get('/them-moi', controller.create);

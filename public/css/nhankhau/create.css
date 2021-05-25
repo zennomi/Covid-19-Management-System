@@ -72,7 +72,6 @@
 }
 .symptom {
 	flex-basis: 40%;
-	width: 50vh;
 	border: 2px solid rgb(38, 36, 36);
 	margin: auto;
 	display: flex;
@@ -92,7 +91,6 @@
 	flex-basis: 15%;
 	color: white;
 	font-weight: 800;
-	opacity: 0.5;
 }
 .opt {
 	flex-basis: 80%;
@@ -114,11 +112,11 @@
 .tile {
 	position: relative;
 	color: white;
-	left: 50vh;
 	font-size: 40px;
 	font-weight: 900;
 	font-family: Quicksand;
+	margin-left: 100px;
 }
-input[disabled], select[disabled], label[for="kdate"], label[for="covtokoro"], label[for="covhito"], label[for="kb"]{
+input[disabled], select[disabled], label[for="kdate"]{
 	opacity: 0.5;
 }

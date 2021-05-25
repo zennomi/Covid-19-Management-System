@@ -1,18 +1,17 @@
 const mongoose = require('mongoose');
 
 const khaiBaoSchema = new mongoose.Schema({
-  idKhaiBao: {
-    type: String,
-    unique: true,
-    required: true
+  nhanKhauId: {
+    type: mongoose.Types.ObjectId,
+    required: true,
+    ref: 'NhanKhau',
+    unique: true
   },
-  soCCCD: {
-    type: String,
-    required: true
-  },
-  vungDich: String,
+  vungDich: [String],
   ngayKhaiBao: Date,
-  bieuHien: String
+  tiepXuc: [String],
+  bieuHien: [String],
+  benhNen: [String]
 })
 
 const KhaiBao = mongoose.model('khaiBao', khaiBaoSchema);

@@ -21,7 +21,7 @@ html(lang="en")
                     strong.me-auto Hệ thống
                     small Vừa xong
                     button.btn-close(type='button' data-bs-dismiss='toast' aria-label='Close')
-                .toast-body= messages.alert
+                .toast-body#toastContent= messages.alert
         // nav
         #nav
             .logo
@@ -36,7 +36,7 @@ html(lang="en")
             .fun
                 a.btn.btn-tung(href="/nhan-khau") NHÂN KHẨU
             .fun
-                a.btn.btn-tung(href="/dich-te") DỊCH TỄ
+                a.btn.btn-tung(href="/khai-bao") KHAI BÁO
             .fun
                 a.btn.btn-tung(href="/test-covid") XÉT NGHIỆM
             .fun
@@ -51,3 +51,5 @@ html(lang="en")
                     delay: 3000
                 });
                 toast.show();
+        block script
+    
