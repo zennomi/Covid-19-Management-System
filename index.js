@@ -28,6 +28,8 @@ const User = require('./models/user.model');
 
 const nhanKhauRoutes = require('./routes/nhankhau.route');
 const khaiBaoRoutes = require('./routes/khaibao.route');
+const cachLyRoutes = require('./routes/cachly.route');
+const testCovidRoutes = require('./routes/testcovid.route');
 
 const app = express();
 
@@ -49,11 +51,52 @@ app.use(session({
 app.use(require('express-flash')());
 
 
-app.route('/api/nhan-khau/')
+app.get('/api/nhan-khau/', async (req, res) => {
+  let nhanKhaus;
+    try {
+      nhanKhaus = await NhanKhau.find();
+    } catch (err) {
+      return res.status(404).json({ msg: err });
+    }
+    console.log(nhanKhaus);
+    res.json({result: nhanKhaus});
+})
+
+app.get('/api/khai-bao/', async (req, res) => {
+  let khaiBaos;
+    try {
+      khaiBaos = await KhaiBao.find();
+    } catch (err) {
+      return res.status(404).json({ msg: err });
+    }
+    res.json({result: khaiBaos});
+})
+
+app.get('/api/test-covid/', async (req, res) => {
+  let testCovids;
+    try {
+      testCovids = await TestCovid.find();
+    } catch (err) {
+      return res.status(404).json({ msg: err });
+    }
+    res.json({result: testCovids});
+})
+
+app.get('/api/cach-ly/', async (req, res) => {
+  let cachLys;
+    try {
+      cachLys = await TestCovid.find();
+    } catch (err) {
+      return res.status(404).json({ msg: err });
+    }
+    res.json({result: cachLys});
+})
+
+app.route('/api/nhan-khau/:soCCCD')
   .get(async (req, res) => {
     let nhanKhau;
     try {
-      nhanKhau = await NhanKhau.findOne({ soCCCD: req.query.soCCCD });
+      nhanKhau = await NhanKhau.findOne({ soCCCD: req.params.soCCCD });
       if (!nhanKhau) throw new Error("Couldn't find any nhanKhau matching soCCCD");
     } catch (err) {
       return res.status(404).json({ msg: err });
@@ -72,18 +115,12 @@ app.use((req, res, next) => {
 
 app.use('/nhan-khau', nhanKhauRoutes);
 app.use('/khai-bao', khaiBaoRoutes);
+app.use('/cach-ly', cachLyRoutes);
+app.use('/test-covid', testCovidRoutes);
 
 app.get('/', (req, res) => {
   res.render('login');
 });
-
-app.get('/cach-ly', (req, res) => {
-  res.render('cachly/index');
-})
-
-app.get('/test-covid', (req, res) => {
-  res.render('testcovid/index');
-})
 
 app.post('/auth/login', async (req, res) => {
   let { username, password } = req.body;

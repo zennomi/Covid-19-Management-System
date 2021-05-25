@@ -1,34 +1,108 @@
 extends ./layouts/common.pug
 
 block stylesheet 
-    link(type='text/css' rel='stylesheet' href='/css/reset.css')
-    link(type='text/css' rel='stylesheet' href='/css/style.css')
+    link(type='text/css' rel='stylesheet' href='/css/dashboard/style.css')
 
 
 block content
-    .funclist1
-        a.func(href='../nhan-khau')
-            h3 NHÂN KHẨU TRÊN ĐỊA BÀN
-            h1 23
-            h3 NGƯỜI
-        a.func(href='/ho-khau')
-            h3 HỘ KHẨU TRÊN ĐỊA BÀN
-            h1 9
-            h3 HỘ
-        a.func(href='/dich-te')
-            h3 NHÂN KHẨU KHAI BÁO DỊCH TỄ
-            h1 10
-            h3 NGƯỜI
-    .funclist2
-        a.func(href='/xet-nghiem')
-            h3 NHÂN KHẨU ĐÃ TEST COVID
-            h1 9
-            h3 NGƯỜI
-        a.func(href='#')
-            h3 NHÂN KHẨU ĐÃ MẮC COVID
-            h1 1
-            h3 NGƯỜI
-        a.func(href='#')
-            h3 NHÂN KHẨU ĐÃ CÁCH LY
-            h1 3
-            h3 NGƯỜI
+    .d-flex.justify-content-around.flex-wrap.mt-2.w-75.mx-auto
+        .property-card.mx-4.mb-3
+            a(href='/nhan-khau')
+                .property-image
+                    .property-image-title
+                        // Optional <h5>Card Title</h5> If you want it, turn on the CSS also.
+            .property-description
+                h3.mt-4.mb-2 NHÂN KHẨU
+                .fw-bol.mb-4(style="font-size: 3rem;")
+                    span.number --
+                    |     
+                    i.fad.fa-users
+                p.fs-6 Số người thường trú, tạm trú trên địa bàn.
+        .property-card.mx-4.mb-3
+            a(href='/nhan-khau')
+                .property-image
+                    .property-image-title
+                        // Optional <h5>Card Title</h5> If you want it, turn on the CSS also.
+            .property-description
+                h3.mt-4.mb-2 HỘ KHẨU
+                .fw-bol.mb-4(style="font-size: 3rem;")
+                    span.number --
+                    |    
+                    i.fad.fa-house
+                p.fs-6 Số hộ khẩu trên địa bản.
+        .property-card.mx-4.mb-3
+            a(href='/khai-bao')
+                .property-image
+                    .property-image-title
+                        // Optional <h5>Card Title</h5> If you want it, turn on the CSS also.
+            .property-description
+                h3.mt-4.mb-2 KHAI BÁO
+                .fw-bol.mb-4(style="font-size: 3rem;")
+                    span.number --
+                    |    
+                    i.fad.fa-file-check
+                p.fs-6 Số người đã khai báo dịch tễ trên địa bàn.
+        .property-card.mx-4.mb-3
+            a(href='/test-covid')
+                .property-image
+                    .property-image-title
+                        // Optional <h5>Card Title</h5> If you want it, turn on the CSS also.
+            .property-description
+                h3.mt-4.mb-2 TEST COVID
+                .fw-bol.mb-4(style="font-size: 3rem;")
+                    span.number --
+                    |     
+                    i.fad.fa-vials
+                p.fs-6 Số người đã xét nghiệm covid.
+        .property-card.mx-4.mb-3
+            a(href='/test-covid')
+                .property-image
+                    .property-image-title
+                        // Optional <h5>Card Title</h5> If you want it, turn on the CSS also.
+            .property-description
+                h3.mt-4.mb-2 DƯƠNG TÍNH
+                .fw-bol.mb-4(style="font-size: 3rem;")
+                    span.number --
+                    |     
+                    i.fad.fa-virus
+                p.fs-6 Số người đã dương tính với covid.
+        .property-card.mx-4.mb-3
+            a(href='/cach-ly')
+                .property-image
+                    .property-image-title
+                        // Optional <h5>Card Title</h5> If you want it, turn on the CSS also.
+            .property-description
+                h3.mt-4.mb-2 CÁCH LY
+                .fw-bol.mb-4(style="font-size: 3rem;")
+                    span.number --
+                    |     
+                    i.fad.fa-shield-virus
+                p.fs-6 Số người đã được cách lý tại nhà/nơi cách ly.
+
+    //- .funclist1
+    //-     a.func(href='../nhan-khau')
+    //-         h3 NHÂN KHẨU TRÊN ĐỊA BÀN
+    //-         h1 23
+    //-         h3 NGƯỜI
+    //-     a.func(href='/ho-khau')
+    //-         h3 HỘ KHẨU TRÊN ĐỊA BÀN
+    //-         h1 9
+    //-         h3 HỘ
+    //-     a.func(href='/dich-te')
+    //-         h3 NHÂN KHẨU KHAI BÁO DỊCH TỄ
+    //-         h1 10
+    //-         h3 NGƯỜI
+    //- .funclist2
+    //-     a.func(href='/xet-nghiem')
+    //-         h3 NHÂN KHẨU ĐÃ TEST COVID
+    //-         h1 9
+    //-         h3 NGƯỜI
+    //-     a.func(href='#')
+    //-         h3 NHÂN KHẨU ĐÃ MẮC COVID
+    //-         h1 1
+    //-         h3 NGƯỜI
+    //-     a.func(href='#')
+    //-         h3 NHÂN KHẨU ĐÃ CÁCH LY
+    //-         h1 3
+    //-         h3 NGƯỜI
+    script(src="/js/randomNumber.js") 

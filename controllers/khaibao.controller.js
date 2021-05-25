@@ -75,7 +75,7 @@ module.exports = {
       khaiBao = await KhaiBao.findById(req.params.id);
       if (!khaiBao) throw Error("Not Found");
     } catch(err) {
-      return res.render('error', { err });
+      return res.render('error', { msg: `Nhân khẩu ${matchedNK.hoVaTen} đã khai báo dịch tễ.`, err });
     }
     khaiBao.vungDich = reqBody.vungDich ? reqBody.vungDich.split(";") : [];
     khaiBao.tiepXuc = reqBody.tiepXuc ? reqBody.tiepXuc.split(";") : [];

@@ -1,127 +1,155 @@
-body {
-	background-image: linear-gradient(rgba(115, 116, 128, 0.7), rgba(115, 116, 128, 0.7)), url(https://img.nhandan.com.vn/Files/Images/2020/12/28/IMG_7802-1609097292047.JPG);
-	background-position: center;
-	background-size: cover;
+body
+{
+  background-color:#f2f2f2;
+  font-family: 'RobotoDraft', 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
-h3 {
-	font-weight: 900;
-	font-size: 25px;
+
+*
+{
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
-#nav {
-	max-height: 17vh;
-	width: 100%;
-	padding-left: 20px;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
+
+h5
+{
+  margin:0px;
+  font-size:1.4em;
+  font-weight:700;
 }
-.logo {
-	display: flex;
+
+p
+{
+  font-size:12px;
 }
-.title {
-	display: flex;
-	align-items: center;
-	color: white;
+
+.center
+{
+  height:100vh;
+  width:100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.title h1 {
-	font-size: 60px;
-	font-weight: 900;
-	font-family: Roboto Condensed;
+
+/* End Non-Essential  */
+
+.property-card
+{
+  height:14em;
+  width:14em;
+  display:-webkit-box;
+  display:-ms-flexbox;
+  display:flex;
+  -webkit-box-orient:vertical;
+  -webkit-box-direction:normal;
+  -ms-flex-direction:column;
+  flex-direction:column;
+  position:relative;
+  -webkit-transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+  -o-transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow: 0 0 40px 10px grey;
+  opacity: 0.7;
+  /* -webkit-box-shadow:  15px 15px 27px #e1e1e3, -15px -15px 27px #ffffff;
+  box-shadow:  15px 15px 27px #e1e1e3, -15px -15px 27px #ffffff; */
 }
-img {
-	max-height: 120px;
+/* ^-- The margin bottom is necessary for the drop shadow otherwise it gets clipped in certain cases. */
+
+/* Top Half of card, image. */
+
+.property-image
+{
+  height:6em;
+  width:14em;
+  padding:1em 2em;
+  position:Absolute;
+  top:0px;
+  -webkit-transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+  -o-transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+  background-image:url('https://i.pinimg.com/736x/9d/b7/76/9db77693049f42373e4ab806e538c903.jpg');
+  /* background-image: url('https://en.vcci.com.vn/hm_content/uploads/247-news/90076439-10156812706655974-269-4365-8258-1586433985.jpg'); */
+  background-size:cover;
+  background-repeat:no-repeat;
 }
-.funclist1 {
-	padding: 1vh;
-	width: 80%;
-	margin: auto;
-	text-align: center;
-	margin-top: 2%;
-	display: flex;
-	justify-content: space-between;
+
+/* Bottom Card Section */
+
+.property-description
+{
+  background-color: #FAFAFC;
+  height:14em;
+  width:14em;
+  position:absolute;
+  bottom:0em;
+  -webkit-transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+  -o-transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+  padding: 0.5em 1em;
+  text-align:center;
 }
-.funclist2 {
-	padding: 1vh;
-	width: 80%;
-	margin: auto;
-	text-align: center;
-	margin-top: 2%;
-	display: flex;
-	justify-content: space-between;
+
+/* Social Icons */
+
+.property-social-icons
+{
+  width:1em;
+  height:1em;
+  background-color:black;
+  position:absolute;
+  bottom:1em;
+  left:1em;
+  -webkit-transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+  -o-transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
-.func {
-	flex-basis: 28%;
-	box-sizing: border-box;
-	min-height: 28vh;
-	padding-top: 10px;
-	background: rgba(85, 86, 94, 0.7);
-	transition: 0.5s;
-	padding-left: 40px ;
-	padding-right: 40px ;
-	box-shadow: 0 0 40px 10px gray;
+
+/* Property Cards Hover States */
+
+.property-card:hover .property-description
+{
+  height:0em;
+  padding:0px 1em;
 }
-.func h1 {
-	font-size: 85px;
-	font-weight: 900;
+.property-card:hover .property-image
+{
+  height:14em;
 }
-.func p {
-	font-family: Quicksand;
+.property-card:hover .d-flex {
+	display: block;
 }
-.func h3 {
-	font-family: IBM Plex Sans;
+
+.property-card:hover .property-social-icons
+{
+  background-color:white;
 }
-.func:hover {
-	background: rgba(46, 45, 41, 1);
+
+.property-card:hover .property-social-icons:hover
+{
+  background-color:blue;
+  cursor:pointer;
 }
-a {
-	color: white;
+
+
+/* Optional
+
+.property-image-title
+{
+text-align:center;
+position:Relative;
+top:30%;
+opacity:0;
+transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1) 0.2s;
+color:black;
+font-size:1.2em;
 }
-.log {
-	display: flex;
-	text-align: right;
-	margin-right: 2%;
-	padding: 0 20px;
+
+.property-card:hover .property-image-title
+{
+opacity:1;
 }
-.b1 {
-	margin-right: 30px;
-}
-.btn-tung {
-	background: rgba(85, 86, 94, 0.7);
-    background-repeat:no-repeat;
-    border: none;
-    cursor:pointer;
-    overflow: hidden;  
-    width: 100px;
-    font-family: Quicksand;
-    color: white;
-    font-weight: 900;
-}
-.btn-tung:hover {
-	color: white;
-	background: black;
-}
-.compic {
-	height: 100px;
-	max-height: 100px;
-	width: 110px;
-	opacity: 1;
-}
-.bar {
-	display: flex;
-	width: 80%;
-	margin: auto;
-	height: 60px;
-	justify-content: center;
-	align-items: center;
-}
-.fun {
-	flex-basis: 15%;
-	height: 40px;
-}
-.fun .btn-tung{
-	height: 40px;
-	width: 150px;
-	box-shadow: 0 0 10px 5px gray inset;
-	font-size: 20px;
-	transition: 0.5s;
-}
+
+*/

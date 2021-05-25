@@ -1,40 +1,32 @@
 extends ../layouts/common.pug
 
-block content
-
-    .sbar
-        input.sinput(type='text')
-        button.sbutton Tìm kiếm
-    .subfunc
-        ul
-            li.add
-                button Thêm
-            li.delete
-                button Xóa
-            li.fix
-                button Sửa
-            li.show
-                button Hiển thị tất cả
-    table
-        tr.header
-            th ID
-            th Họ và tên
-            th Ngày sinh
-            th Giới tính
-            th Địa chỉ
-            th Số điện thoại
-            th Thời điểm test
-            th Hình thức
-            th Kết quả
-        tr.info
-            th 1
-            th Nguyễn Ngọc Tuân
-            th 22/04/2001
-            th Nam
-            th Cầu Giấy, Hà Nội
-            th 0123456789
-            th 21/05/2021 21/06 SA
-            th FCR
-            th Dương tính
-            th
-                button Xem
+block content 
+    form.mb-2
+        button.sbutton.btn.btn-tung.align-middle.me-2 Tìm kiếm
+        input.me-2.sinput.align-middle.form-control.d-inline(type='text' onkeyup="searchTable(this, 'nhanKhauTable')")
+        a.sbutton.btn.btn-tung(href="/test-covid/them-moi") Thêm thông tin xét nghiệm mới
+    .table-responsive.px-5
+        table.table.text-white#nhanKhauTable
+            tr.header.text-center
+                th Số CCCD/CMT
+                th Họ và tên
+                th Ngày sinh
+                th Giới tính
+                th Địa chỉ
+                th Thời điểm test
+                th Hình thức
+                th Kết quả
+            each tc in testCovids
+                tr.info
+                    td.align-middle= tc.nhanKhauId.soCCCD
+                    td.align-middle= tc.nhanKhauId.hoVaTen
+                    td.align-middle= tc.nhanKhauId.namSinh.toISOString().slice(0,10)
+                    td.align-middle= tc.nhanKhauId.gioiTinh
+                    td.align-middle= tc.nhanKhauId.diaChi
+                    td.align-middle= tc.thoiDiemTest.toLocaleString()
+                    td.align-middle= tc.hinhThucTest
+                    td.align-middle= tc.ketQua
+                    td.align-middle.d-flex.justify-content-around
+                        a.d-block.btn.btn-secondary.me-1(href="/test-covid/"+tc._id+"/cap-nhat") Sửa
+                        a.d-block.btn.btn-secondary.me-1(href="/test-covid/"+tc._id+"/xoa") Xoá
+    script(src="/js/searching-table.js") 

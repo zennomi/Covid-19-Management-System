@@ -1,0 +1,14 @@
+extends ../layouts/common.pug
+
+block stylesheet 
+
+block content
+    .card.w-50.mx-auto.shadow
+        .card-body 
+            .card-title     
+                | Xác nhận xoá
+            form.d-flex.justify-content-around(action="/test-covid/"+testCovid._id+"/xoa" method="POST")
+                button.btn.btn-danger(type='submit') Xác nhận 
+                a.btn.btn-outline-secondary(href='/test-covid') Huỷ
+                
+                

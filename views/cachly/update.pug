@@ -1,0 +1,45 @@
+extends ../layouts/common.pug
+
+block stylesheet 
+    link(rel="stylesheet", href="/css/nhankhau/create.css")
+
+block content
+    .tile.d-block.mb-2
+        h2 Sửa thông tin cách ly
+    form.w-75.d-flex.justify-content-around.mx-auto.mb-3.p-3.formpage(action="/cach-ly/"+cachLy._id+"/cap-nhat" method="POST")
+        div.mb-1
+            .form-div.mb-1
+                label.flabel.mb-1(for='name') Họ và tên
+                input.form-control(type='text' name='hoVaTen' disabled value=cachLy.nhanKhauId.hoVaTen)
+            .form-div.mb-1
+                label.flabel.mb-1(for='cmt') Số CMT
+                input#soCCCDInput.form-control(disabled type='text' name='soCCCD' required value=cachLy.nhanKhauId.soCCCD)
+            .form-div.mb-1
+                label.flabel.mb-1(for='birth') Ngày sinh
+                input.form-control(type='date' name='namSinh' disabled value=cachLy.nhanKhauId.namSinh.toISOString().slice(0,10))
+            .form-div.mb-1
+                label.flabel.mb-1(for='address') Địa chỉ
+                input.form-control(type='text' name='diaChi' disabled value=cachLy.nhanKhauId.diaChi)
+            .form-div.mb-1
+                label.flabel.mb-1(for='email') Mã hộ khẩu
+                input.form-control(type='text' name='maHoKhau' disabled value=cachLy.nhanKhauId.maHoKhau)
+        div.mb-1
+            .form-div.mb-1
+                label.flabel.mb-1(for='noicachly') Nơi cách ly
+                input.form-control(type='text' name='noiCachLy' required placeholder="Tại nhà ghi 'nhà'" value=cachLy.noiCachLy)
+            .form-div.mb-1
+                label.flabel.mb-1(for='level') Mức độ
+                select.form-select(name='mucDo' required)
+                    option(value=cachLy.mucDo)=cachLy.mucDo
+                    option(value='F0') F0
+                    option(value='F1') F1
+                    option(value='F2') F2
+                    option(value='F3') F3
+                    option(value='F4') F4
+                    option(value='F5') F5
+            .form-div.mb-1
+                label.flabel.mb-1(for='cldate') Ngày bắt đầu cách ly
+                input.form-control(type='date' name='thoiGian' required value=cachLy.thoiGian.toISOString().slice(0,10))
+            .subm
+                button#submitBtn.btn.btn-tung.cancel(type='submit') Lưu
+                button.cancel Hủy

@@ -6,7 +6,7 @@ block stylesheet
 block content
     .tile.d-block.mb-2
         h2 Khai báo thông tin dịch tễ
-    form.d-flex.justify-content-around.mx-3.mb-3.formpage.p-3(action="/khai-bao/them-moi" method="POST")
+    form.d-flex.justify-content-around.mx-3.mb-3.p-3.formpage(action="/khai-bao/them-moi" method="POST")
         div
             .form-div.mb-1
                 label.flabel.mb-1(for='name') Họ và tên
@@ -28,7 +28,7 @@ block content
             .form-div.mb-1
                 label.d-block.flabel.mb-1.text-center(for='kb') -	Khai báo dịch tễ    -
             .form-div.mb-1
-                label.flabel.mb-1(for='kdate') Ngày khai
+                label.flabel.mb-1 Ngày khai
                 input.form-control(type='date' name='ngayKhaiBao' required)
             .form-div.mb-1
                 label.flabel1.mb-1(for='covtokoro') Đi qua vùng dịch trong vòng 21 ngày?
@@ -108,4 +108,4 @@ block content
                 button.cancel Hủy
 block script
     script(src="/js/notify.js") 
-    script(src="/js/createKhaiBao.js") 
+    script(src="/js/getNhanKhau.js") 

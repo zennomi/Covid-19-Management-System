@@ -86,19 +86,23 @@ a {
 	margin-right: 30px;
 }
 .btn-tung {
-	background: rgba(85, 86, 94, 0.7);
+	/* background: rgba(85, 86, 94, 0.7);
+	 */
+	background: #fff;
+	opacity: 0.8;
     background-repeat:no-repeat;
     border: none;
     cursor:pointer;
     overflow: hidden;  
     min-width: 100px;
     font-family: Quicksand;
-    color: white;
+    color: #212529;
     font-weight: 900;
+	box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 .btn-tung:hover {
 	color: white;
-	background: black;
+	background: #212529;
 }
 .compic {
 	height: 100px;
@@ -121,9 +125,10 @@ a {
 .fun .btn-tung{
 	height: 40px;
 	width: 150px;
-	box-shadow: 0 0 10px 5px gray inset;
+	/* box-shadow: 0 0 10px 5px gray inset; */
 	font-size: 20px;
 	transition: 0.5s;
+	border-radius: 10px;
 }
 
 
@@ -155,7 +160,7 @@ table {
 	left: 50vh;
 	height: 30px;
 	font-size: 15px;
-	box-shadow: 0 0 10px 5px gray inset;
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 .header {
 	height: 40px;
@@ -166,6 +171,7 @@ table {
 }
 .header th {
 	border: 2px solid white;
+	cursor: pointer;
 }
 .info {
 	/* height: 25px; */

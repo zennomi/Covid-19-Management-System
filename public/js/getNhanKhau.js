@@ -2,7 +2,7 @@ let input = document.getElementById('soCCCDInput');
 let submitBtn = document.getElementById('submitBtn');
 
 input.addEventListener('blur', (e) => {
-    fetch('/api/nhan-khau?soCCCD='+input.value)
+    fetch('/api/nhan-khau/'+input.value)
     .then(res => res.json())
     .then(res => {
         if (res.nhanKhau) {
@@ -14,7 +14,7 @@ input.addEventListener('blur', (e) => {
             document.querySelector('input[name="maHoKhau"]').value = nhanKhau.maHoKhau;
             submitBtn.disabled = false;
         } else {
-            notify(`Không tìm thấy nhân khẩu có số CMT/CCCD là ${input.value}.`);
+            notify(`Không tìm thấy nhân khẩu có số CMT/CCCD là ${input.value}. Vui lòng nhập lại.`);
             submitBtn.disabled = true;
         }
     });
