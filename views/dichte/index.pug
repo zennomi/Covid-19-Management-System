@@ -1,0 +1,40 @@
+extends ../layouts/common.pug
+
+block content 
+    form
+        input.sinput(type='text')
+        button.sbutton.btn.btn-tung Tìm kiếm
+    .d-flex.justify-content-around.w-75.my-2.mx-auto
+        a.d-block.btn.btn-tung.shadow(href="/") Thêm
+        a.d-block.btn.btn-tung.shadow(href="/") Xóa
+        a.d-block.btn.btn-tung.shadow(href="/") Sửa
+        a.d-block.btn.btn-tung.shadow(href="/") Hiển thị tất cả
+    .table-responsive.px-5
+        table.table.text-white
+            tr.header
+                th ID
+                th Họ và tên
+                th Ngày sinh
+                th Giới tính
+                th Địa chỉ
+                th Số điện thoại
+                th Ngày khai
+                th Vùng dịch
+                th Tiếp xúc Covid
+                th Triệu chứng
+                th Bệnh nền
+            each _, i in Array(10)
+                tr.info
+                    td= i
+                    td Nguyễn Ngọc Tuân
+                    td 22/04/2001
+                    td Nam
+                    td Cầu Giấy, Hà Nội
+                    td 0123456789
+                    td 21/05/2021
+                    td Không
+                    td Không
+                    td Sốt, đau họng, hãm lon các tdứ
+                    td Nhiều không kể hết
+                    td
+                        button Xem

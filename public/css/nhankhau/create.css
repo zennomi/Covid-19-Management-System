@@ -1,0 +1,124 @@
+.formpage {
+	/* position: relative; */
+	border: 2px solid rgb(38, 36, 36);
+	/* width: 169vh;
+	height: 60vh;
+	top: 50px;
+	left: 10px;
+	display: flex; */
+}
+.indi {
+	flex-basis: 31%;
+	width: 56vh;
+	height: 57vh;
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+}
+.presymp {
+	flex-basis: 31%;
+	width: 56vh;
+	height: 57vh;
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+}
+.symp {
+	flex-basis: 31%;
+	width: 56vh;
+	height: 57vh;
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+}
+.form-div {
+	flex-basis: 12%;
+	width: 50vh;
+	margin: auto;
+}
+.flabel {
+	color: white;
+	font-size: 24px;
+	font-family: Quicksand;
+	font-weight: 600;
+}
+.finput {
+	width: 100%;
+	height: 1.5rem;
+	background: none;
+	outline: none;
+	color: white;
+	font-size: 18px;
+	font-weight: 400;
+}
+.fselect {
+	width: 101%;
+	height: 1.7rem;
+	background: none;
+	outline: none;
+	color: white;
+	font-size: 18px;
+	font-weight: 400;
+	border: 2px solid rgb(38, 36, 36);
+}
+.op {
+	background: rgb(38, 36, 36);
+}
+.flabel1 {
+	color: white;
+	font-size: 18px;
+	font-family: Quicksand;
+	font-weight: 600;
+}
+.symptom {
+	flex-basis: 40%;
+	width: 50vh;
+	border: 2px solid rgb(38, 36, 36);
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+}
+.subm {
+	flex-basis: 10%;
+	width: 50vh;
+
+	margin: auto;
+	display: flex;
+}
+.opti {
+	margin-top: 8px;
+	margin-left: 10px;
+	margin-bottom: 6px;
+	flex-basis: 15%;
+	color: white;
+	font-weight: 800;
+	opacity: 0.5;
+}
+.opt {
+	flex-basis: 80%;
+	display: flex;
+}
+.miniop {
+	flex-basis: 31%;
+	color: white;
+	font-size: 17px;
+}
+
+.cancel {
+	flex-basis: 48%;
+	margin: auto;
+	height: 35px;
+	cursor: pointer;
+	font-size: 20px;
+}
+.tile {
+	position: relative;
+	color: white;
+	left: 50vh;
+	font-size: 40px;
+	font-weight: 900;
+	font-family: Quicksand;
+}
+input[disabled], select[disabled], label[for="kdate"], label[for="covtokoro"], label[for="covhito"], label[for="kb"]{
+	opacity: 0.5;
+}

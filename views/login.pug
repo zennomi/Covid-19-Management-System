@@ -1,0 +1,85 @@
+doctype html
+head
+	meta(charset="UTF-8")
+	meta(name="viewport", content="width=device-width, initial-scale=1.0")
+	title Web Quản Lý Dịch Tễ Covid
+	//- link(href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous")
+	link(rel='stylesheet' type='text/css' href='/css/login/styles.css')
+	link(rel='stylesheet' type='text/css' href='/css/login/style.css')
+	link(rel='stylesheet' type='text/css' href='/css/login/Footer.css')
+body
+	#header
+		.logo
+			img(src='/assets/img/covid.png' class='logo_image')
+		div(class='pro_name')
+			h2 Quản Lý
+			br
+			h2.management Dịch Tễ
+			br
+			h2 Covid
+		div(class='header_image_container')
+	div(id='main_part')
+		.login-wrap
+			.login-html
+				input#tab-1.sign-in(type='radio' name='tab' checked)
+				label.tab(for='tab-1') Đăng nhập
+				input#tab-2.sign-up(type='radio' name='tab')
+				label.tab(for='tab-2')
+				form.login-form(action="/auth/login" method="POST")
+					.sign-in-htm
+						.group
+							label.label(for='user') Tên người dùng
+							input#user.input(type='text' name="username")
+						.group
+							label.label(for='pass') Mật khẩu
+							input#pass.input(type='password' name='password')
+						if messages.warning
+							p= messages.warning
+						.group
+							input.button(type='submit' value='ĐĂNG NHẬP')
+	footer.site-footer
+		.container
+			br
+			.row
+				.col1
+					h6 Giới thiệu sản phẩm
+					p.text-justify
+						| Hé cửa sổ ra mà xem.
+						br
+						| Có một chàng bác sĩ đứng ở ngay nhà em.
+				.col2
+					h6 About Us
+					em#team Thành viên nhóm
+					ol
+						li Nguyễn Ngọc Tuân
+						li Nguyễn Đồng Đức Anh
+						li Nguyễn Đăng Tuấn Anh
+						li Nguyễn Đức Tùng
+						li Nguyễn Huy Hoàn
+				.col3
+					h6 Tech
+					ul.footer-links
+						li
+							a(href='#') MongoDB
+						li
+							a(href='#') ExpressJS
+						li
+							a(href='#') React
+						li
+							a(href='#') Node
+			hr
+		.container
+			.row
+				.col-md-8.col-sm-6.col-xs-12
+					p.copyright-text
+						| Copyright © 2021 All Rights Reserved by
+						a  NTN company
+						| .
+				.col-md-4col-sm-6col-xs-12
+					ul.social-icons
+						li
+							a.facebook(href='https://www.facebook.com/')
+						li
+							a.twitter(href='https://www.youtube.com/')
+						li
+							a(classe='github' href='https://github.com/')

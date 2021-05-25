@@ -1,0 +1,41 @@
+extends ../layouts/common.pug
+
+block content
+    form.mb-2
+        input.me-2.sinput.align-middle.form-control.d-inline(type='text')
+        button.sbutton.btn.btn-tung.align-middle.me-2 Tìm kiếm
+        a.sbutton.btn.btn-tung(href="/nhan-khau/them-moi") Thêm nhân khẩu mới
+    //- .subfunc
+    //-     ul
+    //-         li.shadow.add
+    //-             a.btn.btn-tung(href="/nhan-khau/them-moi") Thêm
+    //-         li.shadow.delete
+    //-             a.btn.btn-tung(href="/nhan-khau/xoa") Xóa
+    //-         li.shadow.fix
+    //-             a.btn.btn-tung(href="/nhan-khau/cap-nhat") Sửa
+    //-         li.shadow.show
+    //-             a.btn.btn-tung(href="/nhan-khau") Hiển thị tất cả
+    .px-3
+        table.table.text-white
+            tr.header.text-center
+                th Mã hộ khẩu
+                th Số CMND
+                th Họ và tên
+                th Ngày sinh
+                th Giới tính
+                th Địa chỉ
+                th Số điện thoại
+                th
+            each nhanKhau in nhanKhaus
+                tr.info
+                    td= nhanKhau.maHoKhau
+                    td= nhanKhau.soCCCD
+                    td= nhanKhau.hoVaTen
+                    td= nhanKhau.namSinh.toISOString().slice(0,10)
+                    td= nhanKhau.gioiTinh
+                    td= nhanKhau.diaChi
+                    td= nhanKhau.soDienThoai
+                    td
+                        a.btn.btn-secondary.me-1(href="/nhan-khau/"+nhanKhau._id+"/chi-tiet") Xem
+                        a.btn.btn-secondary.me-1(href="/nhan-khau/"+nhanKhau._id+"/cap-nhat") Sửa
+                        a.btn.btn-secondary.me-1(href="/nhan-khau/"+nhanKhau._id+"/xoa") Xoá

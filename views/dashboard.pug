@@ -1,0 +1,34 @@
+extends ./layouts/common.pug
+
+block stylesheet 
+    link(type='text/css' rel='stylesheet' href='/css/reset.css')
+    link(type='text/css' rel='stylesheet' href='/css/style.css')
+
+
+block content
+    .funclist1
+        a.func(href='../nhan-khau')
+            h3 NHÂN KHẨU TRÊN ĐỊA BÀN
+            h1 23
+            h3 NGƯỜI
+        a.func(href='/ho-khau')
+            h3 HỘ KHẨU TRÊN ĐỊA BÀN
+            h1 9
+            h3 HỘ
+        a.func(href='/dich-te')
+            h3 NHÂN KHẨU KHAI BÁO DỊCH TỄ
+            h1 10
+            h3 NGƯỜI
+    .funclist2
+        a.func(href='/xet-nghiem')
+            h3 NHÂN KHẨU ĐÃ TEST COVID
+            h1 9
+            h3 NGƯỜI
+        a.func(href='#')
+            h3 NHÂN KHẨU ĐÃ MẮC COVID
+            h1 1
+            h3 NGƯỜI
+        a.func(href='#')
+            h3 NHÂN KHẨU ĐÃ CÁCH LY
+            h1 3
+            h3 NGƯỜI

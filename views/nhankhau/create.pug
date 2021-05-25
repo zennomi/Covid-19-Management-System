@@ -1,0 +1,38 @@
+extends ../layouts/common.pug
+
+block stylesheet 
+    link(rel="stylesheet", href="/css/nhankhau/create.css")
+
+block content
+    .tile.d-block.mb-2
+        h2 Thêm thông tin nhân khẩu
+    form.d-flex.justify-content-around.w-75.mx-auto.formpage.p-5(action="/nhan-khau/them-moi" method="POST")
+        div.mb-1
+            .form-div.mb-1
+                label.flabel.mb-1(for='name') Họ và tên
+                input.form-control(type='text' name='hoVaTen' required)
+            .form-div.mb-1
+                label.flabel.mb-1(for='cmt') Số CMT/CCCS
+                input.form-control(type='text' name='soCCCD' required)
+            .form-div.mb-1
+                label.flabel.mb-1(for='birth') Ngày sinh
+                input.form-control(type='date' name='namSinh' required)
+            .form-div.mb-1
+                label.flabel.mb-1(for='sex') Giới tính
+                select.form-select(name='gioiTinh')
+                    option(value='NAM') Nam
+                    option(value='NỮ') Nữ
+        div.mb-1
+            .form-div.mb-1
+                label.flabel.mb-1(for='address') Địa chỉ
+                input.form-control(type='text' name='diaChi' required)
+            .form-div.mb-1
+                label.flabel.mb-1(for='sdt') Số điện thoại
+                input.form-control(type='text' name='soDienThoai' required)
+            .form-div.mb-1
+                label.flabel.mb-1() Mã hộ khẩu
+                input.form-control(type='text' name='maHoKhau' required)
+            .form-div.mb-1
+            .subm.d-flex.justify-content-around
+                button.btn.btn-tung(type='submit') Lưu
+                a.btn.btn-tung(href="/") Hủy
