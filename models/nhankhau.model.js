@@ -24,7 +24,7 @@ const nhanKhauSchema = new mongoose.Schema({
   diaChi: String,
   trangThai: {
     type: String,
-    enum: ['', 'MỚI SINH', 'ĐÃ MẤT'],
+    enum: ['', 'MỚI SINH', 'ĐÃ MẤT', 'NHẬP CƯ'],
     default: ''
   },
   chuHo: {

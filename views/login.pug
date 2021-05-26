@@ -3,61 +3,93 @@ head
 	meta(charset="UTF-8")
 	meta(name="viewport", content="width=device-width, initial-scale=1.0")
 	title Web Quản Lý Dịch Tễ Covid
-	//- link(href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous")
-	link(rel='stylesheet' type='text/css' href='/css/login/styles.css')
+	//- link(rel='stylesheet' type='text/css' href='/css/login/styles.css')
 	link(rel='stylesheet' type='text/css' href='/css/login/style.css')
+	link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css")
 	link(rel='stylesheet' type='text/css' href='/css/login/Footer.css')
 	link(rel='stylesheet', type='text/css', href='//cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@8af0edd/css/all.css')
 body
-	#header
-		.logo
-			img(src='/assets/img/covid.png' class='logo_image')
-		div(class='pro_name')
-			h2 Quản Lý
-			br
-			h2.management Dịch Tễ
-			br
-			h2 Covid
-		div(class='header_image_container')
-	div(id='main_part')
-		.login-wrap
-			.login-html
-				input#tab-1.sign-in(type='radio' name='tab' checked)
-				label.tab(for='tab-1') Đăng nhập
-				input#tab-2.sign-up(type='radio' name='tab')
-				label.tab(for='tab-2')
-				form.login-form(action="/auth/login" method="POST")
-					.sign-in-htm
+	.jumbotron.bg-cover.text-white.mb-0(style='background: url(/assets/img/bg.jpg); height: 100vh')
+		.container.py-2.text-center
+			h1.display-4.font-weight-bold WEB QUẢN LÝ DỊCH TỄ COVID
+			//- p.font-italic.mb-0 Using simple jumbotron-style component, create a nice Bootstrap 4 header with a background image.
+			//- p.font-italic
+			//- 	| Snippe by
+			//- 	a.text-white(href='https://bootstrapious.com')
+					u Bootstrapious
+			a.btn.btn-outline-light.px-5(href='#login') ĐĂNG NHẬP
+
+	.login-wrap#login
+		.login-html
+			input#tab-1.sign-in(type='radio' name='tab' checked)
+			label.tab(for='tab-1') ĐĂNG NHẬP
+			input#tab-2.sign-up(type='radio' name='tab')
+			label.tab(for='tab-2')
+			form.login-form(action="/auth/login" method="POST")
+				.sign-in-htm
+					.group
+						label.label(for='user') Tên tài khoản
+						input#user.input(type='text' name='username' required value=messages.username&&messages.username[0])
+					.group
+						label.label(for='pass') Mật khẩu
+						input#pass.input(type='password' data-type='password' name="password" required value=messages.password&&messages.password[0])
+					if (messages.warning)
 						.group
-							label.label(for='user') Tên người dùng
-							input#user.input(type='text' name="username")
-						.group
-							label.label(for='pass') Mật khẩu
-							input#pass.input(type='password' name='password')
-						if messages.warning
-							p= messages.warning
-						.group
-							input.button(type='submit' value='ĐĂNG NHẬP')
+							.alert.alert-danger= messages.warning
+					.group
+						input.button(type='submit' value='Đăng nhập')
+				//- .sign-up-htm
+				//- 	.group
+				//- 		label.label(for='user') Username
+				//- 		input#user.input(type='text')
+				//- 	.group
+				//- 		label.label(for='pass') Password
+				//- 		input#pass.input(type='password' data-type='password')
+				//- 	.group
+				//- 		label.label(for='pass') Repeat Password
+				//- 		input#pass.input(type='password' data-type='password')
+				//- 	.group
+				//- 		label.label(for='pass') Email Address
+				//- 		input#pass.input(type='text')
+				//- 	.group
+				//- 		input.button(type='submit' value='Sign Up')
+				//- 	.hr
+				//- 	.foot-lnk
+				//- 		label(for='tab-1') Already Member?
+
 	footer.site-footer
 		.container
-			br
 			.row
-				.col1
-					h6 Giới thiệu sản phẩm
-					p.text-justify
-						| Hé cửa sổ ra mà xem.
-						br
-						| Có một chàng bác sĩ đứng ở ngay nhà em.
-				.col2
-					h6 About Us
-					em#team Thành viên nhóm
-					ol
-						li Nguyễn Ngọc Tuân
-						li Nguyễn Đồng Đức Anh
-						li Nguyễn Đăng Tuấn Anh
-						li Nguyễn Đức Tùng
-						li Nguyễn Huy Hoàn
-				.col3
+				.col-sm-12.col-md-6
+					h6 Về chúng mình 
+					p.text-justify  
+						i COVID19 ANTI HUB 
+						| là một nhóm được thành lập ngay sau khi thầy Nhật Hoá học phần Công Nghệ Phần Mềm giao giao bài tập lớn, mục tiêu nhóm là xây dựng một web app quản lý dịch tễ covid. Nhóm đã trải qua rất nhiều khủng hoảng về tinh thần, suy nghĩ về cuộc đời, về môn học nặng 2 tín này, nhưng thật may mắn là mình đang viết dòng này sau khi đã code xong 80% cái web và ngày mai là ngày nộp báo cáo. Thôi viết thế đủ kín khung này rồi, mọi người nhớ chú ý và tự bảo vệ mình trong đợt dịch nha  
+						i.text-danger.fas.fa-heart
+				.col-xs-6.col-md-3
+					h6 Thành viên
+					ul.footer-links
+						li
+							a(href='#')
+								b Leader
+								|  Nguyễn Ngọc Tuân
+						li
+							a(href='#')
+								b Coder
+								|  Nguyễn Đăng Tuấn Anh 
+						li
+							a(href='#')
+								b Designer
+								|   Nguyễn Đức Tùng
+						li
+							a(href='#')
+								b BA
+								|   Nguyễn Đồng Đức Anh 
+						li
+							a(href='http://scanfcode.com/category/android/')
+								b Tester 
+								|   Nguyễn Huy Hoàn 
+				.col-xs-6.col-md-3
 					h6 Tech
 					ul.footer-links
 						li
@@ -65,25 +97,24 @@ body
 						li
 							a(href='#') ExpressJS
 						li
-							a(href='#') React
+							a(href='#') Pug
 						li
-							a(href='#') Node
+							a(href='#') MongoDB
+						li
+							a(href='#') Và rất nhiều thư viện khác
 			hr
 		.container
 			.row
 				.col-md-8.col-sm-6.col-xs-12
 					p.copyright-text
-						| Copyright © 2021 All Rights Reserved by
-						a  NTN company
+						| Copyright &copy; 2021 All Rights Reserved by 
+						a(href='#') Tuân Anhx2 Tùng Hoàn
 						| .
-				.col-md-4col-sm-6col-xs-12
+				.col-md-4.col-sm-6.col-xs-12
 					ul.social-icons
 						li
-							a.facebook(href='https://www.facebook.com/')
+							a.facebook(href='https://www.facebook.com/ngdatuananh/')
 								i.fab.fa-facebook
 						li
-							a.twitter(href='https://www.youtube.com/')
-								i.fab.fa-youtube
-						li
-							a(classe='github' href='https://github.com/')
+							a.dribbble(href='#')
 								i.fab.fa-github

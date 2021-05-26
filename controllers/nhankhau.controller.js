@@ -12,10 +12,11 @@ module.exports = {
     } catch (err) {
       return res.render('error', { err });
     }
-    res.render('nhankhau/index', { nhanKhaus });
+    res.render('nhankhau/index', { nhanKhaus, query });
   },
   create: (req, res) => {
-    res.render('nhankhau/create');
+    let query = req.query || {};
+    res.render('nhankhau/create', {query});
   },
   update: async (req, res) => {
     let nhanKhau;
@@ -28,14 +29,17 @@ module.exports = {
     res.render('nhankhau/update', { nhanKhau });
   },
   read: async (req, res) => {
-    let nhanKhau;
+    let nhanKhau, khaiBao, cachLy, testCovids;
     try {
       nhanKhau = await NhanKhau.findById(req.params.id);
+      khaiBao = await KhaiBao.findOne({nhanKhauId: req.params.id});
+      cachLy = await CachLy.findOne({nhanKhauId: req.params.id});
+      testCovids = await TestCovid.find({nhanKhauId: req.params.id});
       if (!nhanKhau) throw new Erorr("Not found");
     } catch (err) {
       return res.render('error', { err });
     }
-    res.render('nhankhau/read', { nhanKhau });
+    res.render('nhankhau/read', { nhanKhau, khaiBao, cachLy, testCovids });
   },
   delete: async (req, res) => {
     let nhanKhau;

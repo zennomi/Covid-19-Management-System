@@ -9,31 +9,31 @@ block content
     form.w-75.d-flex.justify-content-around.mx-auto.mb-3.p-3.formpage(action="/test-covid/them-moi" method="POST")
         div.mb-1
             .form-div.mb-1
-                label.flabel.mb-2(for='name') Họ và tên
+                label.flabel.mb-1(for='name') Họ và tên
                 input.form-control(type='text' name='hoVaTen' disabled)
             .form-div.mb-1
-                label.flabel.mb-2(for='cmt') Số CMT/CCCD
+                label.flabel.mb-1(for='cmt') Số CMT/CCCD
                 input#soCCCDInput.form-control(type='text' name='soCCCD' required)
             .form-div.mb-1
-                label.flabel.mb-2(for='birth') Ngày sinh
+                label.flabel.mb-1(for='birth') Ngày sinh
                 input.form-control(type='date' name='namSinh' disabled)
             .form-div.mb-1
-                label.flabel.mb-2(for='address') Địa chỉ
+                label.flabel.mb-1(for='address') Địa chỉ
                 input.form-control(type='text' name='diaChi' disabled)
             .form-div.mb-1
-                label.flabel.mb-2(for='email') Mã hộ khẩu
+                label.flabel.mb-1(for='email') Mã hộ khẩu
                 input.form-control(type='text' name='maHoKhau' disabled)
         div.mb-1
             .form-div.mb-1
-                label.flabel.mb-2(for='testtime') Thời điểm test
+                label.flabel.mb-1(for='testtime') Thời điểm test
                 input.form-control(type='datetime-local' name='thoiDiemTest' required)
             .form-div.mb-1
-                label.flabel.mb-2(for='tform') Hình thức test
+                label.flabel.mb-1(for='tform') Hình thức test
                 select.form-select(name='hinhThucTest' required)
                     option(value='PCR') PCR
                     option(value='TEST NHANH') Test nhanh
             .form-div.mb-1
-                label.flabel.mb-2(for='result') Kết quả
+                label.flabel.mb-1(for='result') Kết quả
                 select.form-select(name='ketQua' required)
                     option(value='CHƯA CÓ') Chưa có
                     option(value='DƯƠNG TÍNH') Dương tính

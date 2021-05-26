@@ -9,103 +9,114 @@ block content
     form.d-flex.justify-content-around.mx-3.mb-3.p-3.formpage(action="/khai-bao/them-moi" method="POST")
         div
             .form-div.mb-1
-                label.flabel.mb-2(for='name') Họ và tên
+                label.flabel.mb-1(for='name') Họ và tên
                 input.form-control(type='text' name='hoVaTen' disabled)
             .form-div.mb-1
-                label.flabel.mb-2(for='cmt') Số CMT/CCCD
+                label.flabel.mb-1(for='cmt') Số CMT/CCCD
                 input#soCCCDInput.form-control(type='text' name='soCCCD' required)
             .form-div.mb-1
-                label.flabel.mb-2(for='birth') Ngày sinh
+                label.flabel.mb-1(for='birth') Ngày sinh
                 input.form-control(type='date' name='namSinh' disabled)
             .form-div.mb-1
-                label.flabel.mb-2(for='birth') Địa chỉ
+                label.flabel.mb-1(for='birth') Địa chỉ
                 input.form-control(type='text' name='diaChi' disabled)
+            .form-div.mb-1
+                label.flabel.mb-1(for='email') Mã hộ khẩu
+                input.form-control(type='text' name='maHoKhau' disabled)
         div
             .form-div.mb-1
-                label.flabel.mb-2(for='email') Mã hộ khẩu
-                input.form-control(type='text' name='maHoKhau' disabled)
-            .form-div.mb-1
-            .form-div.mb-1
-                label.d-block.flabel.mb-2.text-center(for='kb') -	Khai báo dịch tễ    -
-            .form-div.mb-1
-                label.flabel.mb-2 Ngày khai
+                label.d-block.fw-bold.flabel.mb-1.text-center(for='kb') KHAI BÁO DỊCH TỄ
+            .form-div.mb-2
+                label.flabel.mb-1 Ngày khai
                 input.form-control(type='date' name='ngayKhaiBao' required)
-            .form-div.mb-1
+            .form-div.mb-2
                 label.flabel1.mb-1(for='covtokoro') Đi qua vùng dịch trong vòng 21 ngày?
                 input.form-control#covtokoro(type="text", name="vungDich" placeholder="Địa điểm ngăn cách bởi dấu chấm phẩy")
             .form-div.mb-1
                 label.flabel1.mb-1(for='covhito') Tiếp xúc bệnh nhân COVID trong vòng 21 ngày?
                 input.form-control#covhito(type="text", name="tiepXuc" placeholder="CMT/CCCD ngăn cách bởi dấu chấm phẩy")
         .div
-            .symptom.p-2.mb-2
-                .opti
-                    p Trong 21 ngày qua anh/chị có dấu hiệu nào?
-                .opt
-                    .miniop
-                        input.checkbox(type='checkbox' id='b1' name="bieuHien[]" value="Khó thở")
-                        label(for='b1') Khó thở
-                    .miniop
-                        input.checkbox(type='checkbox' id='b2' name="bieuHien[]" value="Buồn nôn")
-                        label(for='b2') Buồn nôn
-                    .miniop
-                        input.checkbox(type='checkbox' id='b3' name="bieuHien[]" value="Sốt")
-                        label(for='b3') Sốt
-                .opt
-                    .miniop
-                        input.checkbox(type='checkbox' id='b4' name="bieuHien[]" value="Ho")
-                        label(for='b4') Ho
-                    .miniop
-                        input.checkbox(type='checkbox' id='b5' name="bieuHien[]" value="Đau họng")
-                        label(for='b5') Đau họng
-                    .miniop
-                        input.checkbox(type='checkbox' id='b6' name="bieuHien[]" value="Xuất huyết ngoài da")
-                        label(for='b6') Xuất huyết ngoài da
-                .opt
-                    .miniop
-                        input.checkbox(type='checkbox' id='b7' name="bieuHien[]" value="Tiêu chảy")
-                        label(for='b7') Tiêu chảy
-                    .miniop
-                        input.checkbox(type='checkbox' id='b8' name="bieuHien[]" value="Viêm phổi")
-                        label(for='b8') Viêm phổi
-                    .miniop
-                        input.checkbox(type='checkbox' id='b9' name="bieuHien[]" value="Hay mệt mỏi")
-                        label(for='b9') Hay mệt mỏi
-            .symptom.p-2.mb-2
-                .opti
-                    p Anh/chị có đang mắc bệnh nền nào?
-                .opt
-                    .miniop
-                        input.checkbox(type='checkbox' id='a1' name="benhNen[]" value="Gan man tĩnh")
-                        label(for='a1') Gan man tĩnh
-                    .miniop
-                        input.checkbox(type='checkbox' id='a2' name="benhNen[]" value="Thận mãn tính")
-                        label(for='a2') Thận mãn tính
-                    .miniop
-                        input.checkbox(type='checkbox' id='a3' name="benhNen[]" value="HIV/AIDS")
-                        label(for='a3') HIV/AIDS
-                .opt
-                    .miniop
-                        input.checkbox(type='checkbox' id='a4' name="benhNen[]" value="Thiếu máu")
-                        label(for='a4') Thiếu máu
-                    .miniop
-                        input.checkbox(type='checkbox' id='a5' name="benhNen[]" value="Tim mạch")
-                        label(for='a5') Tim mạch
-                    .miniop
-                        input.checkbox(type='checkbox' id='a6' name="benhNen[]" value="Tiểu đường")
-                        label(for='a6') Tiểu đường
-                .opt
-                    .miniop
-                        input.checkbox(type='checkbox' id='a7' name="benhNen[]" value="Ung thư")
-                        label(for='a7') Ung thư
-                    .miniop
-                        input.checkbox(type='checkbox' id='a8' name="benhNen[]" value="Cao huyết áp")
-                        label(for='a8') Cao huyết áp
-                    //- .miniop
-                    //-     input.checkbox(type='checkbox' id='a9' name="benhNen[]" value="Khác")
-                    //-     label(for='a9') Khác
-            .subm
-                button#submitBtn.btn.btn-tung.cancel(type='submit' disabled) Hoàn thành
-                button.cancel Hủy
+            .symptom.p-2.mb-2.text-white
+                .quicksand.fw-bold.mb-2 Trong 21 ngày qua anh/chị có dấu hiệu nào?
+                .row.row-cols-3.utm_centur
+                    .col
+                        .form-check
+                            input.form-check-input(type='checkbox' id='b1' name="bieuHien[]" value="Khó thở")
+                            label.form-check-label.mt-1(for='b1') Khó thở
+                    .col
+                        .form-check
+                            input.form-check-input(type='checkbox' id='b2' name="bieuHien[]" value="Buồn nôn")
+                            label.form-check-label.mt-1(for='b2') Buồn nôn
+                    .col
+                        .form-check
+                            input.form-check-input(type='checkbox' id='b3' name="bieuHien[]" value="Sốt")
+                            label.form-check-label.mt-1(for='b3') Sốt
+                    .col
+                        .form-check
+                            input.form-check-input(type='checkbox' id='b4' name="bieuHien[]" value="Ho")
+                            label.form-check-label.mt-1(for='b4') Ho
+                    .col
+                        .form-check
+                            input.form-check-input(type='checkbox' id='b5' name="bieuHien[]" value="Đau họng")
+                            label.form-check-label.mt-1(for='b5') Đau họng
+                    .col
+                        .form-check
+                            input.form-check-input(type='checkbox' id='b6' name="bieuHien[]" value="Xuất huyết ngoài da")
+                            label.form-check-label.mt-1(for='b6') Xuất huyết ngoài da
+                    .col
+                        .form-check
+                            input.form-check-input(type='checkbox' id='b7' name="bieuHien[]" value="Tiêu chảy")
+                            label.form-check-label.mt-1(for='b7') Tiêu chảy
+                    .col
+                        .form-check
+                            input.form-check-input(type='checkbox' id='b8' name="bieuHien[]" value="Viêm phổi")
+                            label.form-check-label.mt-1(for='b8') Viêm phổi
+                    .col
+                        .form-check
+                            input.form-check-input(type='checkbox' id='b9' name="bieuHien[]" value="Hay mệt mỏi")
+                            label.form-check-label.mt-1(for='b9') Hay mệt mỏi
+            .symptom.p-2.mb-2.text-white
+                .quicksand.fw-bold.mb-2 Anh/chị có đang mắc bệnh nền nào?
+                .row.row-cols-3.utm_centur
+                    .col
+                        .form-check
+                            input.form-check-input(type='checkbox' id='a1' name="benhNen[]" value="Gan man tĩnh")
+                            label.form-check-label.mt-1(for='a1') Gan man tĩnh
+                    .col
+                        .form-check
+                            input.form-check-input(type='checkbox' id='a2' name="benhNen[]" value="Thận mãn")
+                            label.form-check-label.mt-1(for='a2') Thận mãn tính
+                    .col
+                        .form-check
+                            input.form-check-input(type='checkbox' id='a3' name="benhNen[]" value="HIV/AIDS")
+                            label.form-check-label.mt-1(for='a3') HIV/AIDS
+                    .col
+                        .form-check
+                            input.form-check-input(type='checkbox' id='a4' name="benhNen[]" value="Thiếu máu")
+                            label.form-check-label.mt-1(for='a4') Thiếu máu
+                    .col
+                        .form-check
+                            input.form-check-input(type='checkbox' id='a5' name="benhNen[]" value="Tim mạch")
+                            label.form-check-label.mt-1(for='a5') Tim mạch
+                    .col
+                        .form-check
+                            input.form-check-input(type='checkbox' id='a6' name="benhNen[]" value="Tiểu đường")
+                            label.form-check-label.mt-1(for='a6') Tiểu đường
+                    .col
+                        .form-check
+                            input.form-check-input(type='checkbox' id='a7' name="benhNen[]" value="Ung thư")
+                            label.form-check-label.mt-1(for='a7') Ung thư
+                    .col
+                        .form-check
+                            input.form-check-input(type='checkbox' id='a8' name="benhNen[]" value="Cao huyết áp")
+                            label.form-check-label.mt-1(for='a8') Cao huyết áp
+                    .col
+                        .form-check
+                            input.form-check-input(type='checkbox' id='a9' name="benhNen[]" value="Khác")
+                            label.form-check-label.mt-1(for='a9') Khác
+            .subm.d-flex.justify-content-around
+                button#submitBtn.btn.btn-tung(type='submit' disabled) Hoàn thành
+                a.btn.btn-tung(href='/khai-bao') Trở về
 block script
     script(src="/js/notify.js") 
     script(src="/js/getNhanKhau.js") 

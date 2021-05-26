@@ -5,48 +5,44 @@ block stylesheet
 
 block content
     .tile.d-block.mb-2
-        h2 Thêm thông tin nhân khẩu
-    form.d-flex.justify-content-around.w-75.mx-auto.formpage.p-5(action="/nhan-khau/"+nhanKhau._id+"/cap-nhat" method="POST")
+        h2 Cập nhật thông tin nhân khẩu
+    form.d-flex.justify-content-around.w-75.mx-auto.formpage.p-5.mb-3(action="/nhan-khau/"+nhanKhau._id+"/cap-nhat" method="POST")
         div.mb-1
             .form-div.mb-1
-                label.flabel.mb-2(for='name') Họ và tên
+                label.flabel.mb-1(for='name') Họ và tên
                 input.form-control(type='text' name='hoVaTen' value=nhanKhau.hoVaTen required)
             .form-div.mb-1
-                label.flabel.mb-2(for='cmt') Số CMT/CCCD
+                label.flabel.mb-1(for='cmt') Số CMT/CCCD
                 input.form-control(type='text' name='soCCCD' value=nhanKhau.soCCCD required)
             .form-div.mb-1
-                label.flabel.mb-2(for='birth') Ngày sinh
+                label.flabel.mb-1(for='birth') Ngày sinh
                 input.form-control(type='date' name='namSinh' value=nhanKhau.namSinh.toISOString().slice(0,10) required)
             .form-div.mb-1
-                label.flabel.mb-2(for='sex') Giới tính
+                label.flabel.mb-1(for='sex') Giới tính
                 select.form-select(name='gioiTinh' required)
-                    option(value=nhanKhau.gioiTinh selected)= nhanKhau.gioiTinh
-                    option(value='NAM') Nam
-                    option(value='NỮ') Nữ
+                    option(value='NAM' selected=nhanKhau.gioiTinh == 'NAM') Nam
+                    option(value='NỮ' selected=nhanKhau.gioiTinh == 'NỮ') Nữ
+            .form-div.mb-1
+                label.flabel.mb-1(for='address' required) Địa chỉ
+                input.form-control(type='text' name='diaChi' value=nhanKhau.diaChi)
         div.mb-1
             .form-div.mb-1
-                label.flabel.mb-2(for='address' required) Địa chỉ
-                input.form-control(type='text' name='diaChi' value=nhanKhau.diaChi)
+                label.flabel.mb-1(for='sdt') Số điện thoại
+                input.form-control(type='text' name='soDienThoai'  pattern='^\\d{9,10}$' value=nhanKhau.soDienThoai)
             .form-div.mb-1
-                label.flabel.mb-2(for='sdt') Số điện thoại
-                input.form-control(type='text' name='soDienThoai' value=nhanKhau.soDienThoai)
-            .form-div.mb-1
-                label.flabel.mb-2() Mã hộ khẩu
-                input.form-control(type='text' name='maHoKhau' value=nhanKhau.maHoKhau required)
+                label.flabel.mb-1() Mã hộ khẩu
+                input.form-control(type='text' name='maHoKhau' value=nhanKhau.maHoKhau required  pattern='^[A-Za-z0-9]{0,}' title='Chỉ chứa các ký tự chữ thường và chữ số')
             .form-div.mb-2
                 .form-check.ms-1
                     input.form-check-input#chuHo(type="checkbox" name="chuHo" value="true" checked=nhanKhau.chuHo)
                     label.flabel.fs-5.mb-2(for="chuHo") Là chủ hộ
-            .form-div.mb-1.d-flex.justify-content-around
-                .form-check
-                    input.form-check-input#nhapCu(type="radio" name="trangThai" value="" checked)
-                    label.flabel.fs-5.mb-1(for="nhapCu") Nhập cư
-                .form-check
-                    input.form-check-input#moiSinh(type="radio" name="trangThai" value="MỚI SINH" checked=nhanKhau.trangThai == "MỚI SINH")
-                    label.flabel.fs-5.mb-1(for="moiSinh") Mới sinh 
-                .form-check
-                    input.form-check-input#daMat(type="radio" name="trangThai" value="ĐÃ MẤT" checked=nhanKhau.trangThai == "ĐÃ MẤT")
-                    label.flabel.fs-5.mb-1(for="daMat") Đã mất
+            .form-div.mb-2
+                label.flabel.mb-1(for='sex') Trạng thái
+                select.form-select(name='trangThai')
+                    option(value='' selected=nhanKhau.trangThai == "") Trống
+                    option(value='MỚI SINH' selected=nhanKhau.trangThai == "MỚI SINH") Mới sinh
+                    option(value='ĐÃ MẤT' selected=nhanKhau.trangThai == "ĐÃ MẤT") Đã mất
+                    option(value='NHẬP CƯ' selected=nhanKhau.trangThai == "NHẬP CƯ") Nhập cư
             .subm.d-flex.justify-content-around
                 button.btn.btn-tung(type='submit') Lưu
                 a.btn.btn-tung(href="/nhan-khau/") Trở về

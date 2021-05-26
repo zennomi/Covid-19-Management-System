@@ -41,6 +41,7 @@
 	color: white;
 	font-size: 24px;
 	margin-bottom: 5px;
+	font-family: 'Quicksand', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 	/* font: 400 13.3333px Arial; */
 	/* font-weight: 600; */
 }
@@ -73,8 +74,10 @@
 	font-weight: 600;
 }
 .symptom {
+	max-width: 500px;
 	flex-basis: 40%;
-	border: 2px solid rgb(38, 36, 36);
+	border: 2px solid rgb(255, 255, 255);
+	border-radius: 10px;
 	margin: auto;
 	display: flex;
 	flex-direction: column;
@@ -119,6 +122,9 @@
 	font-family: Quicksand;
 	margin-left: 100px;
 }
-input[disabled], select[disabled], label[for="kdate"]{
-	opacity: 0.5;
+input[disabled], select[disabled] {
+	background-color: cadetblue;
+}
+input.form-control, select.form-select {
+	font-family: 'utm_centur';
 }

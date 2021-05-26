@@ -27,6 +27,14 @@ h3 {
 	font-family: 'utm_avo_bold';
 }
 
+.quicksand {
+	font-family:-apple-system, BlinkMacSystemFont, 'Quicksand', 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif ;
+}
+
+.utm_centur {
+	font-family: 'utm_centur', 'Times New Roman', Times, serif;
+}
+
 #nav {
 	max-height: 17vh;
 	width: 100%;
@@ -123,6 +131,11 @@ a {
 .btn-tung-hover, .btn-tung:hover {
 	color: white;
 	background: #212529;
+}
+.btn-tung-hover:hover {
+	background: #fff;
+	color: #212529;
+	border: solid 2px #212529;
 }
 .compic {
 	height: 100px;
@@ -224,6 +237,7 @@ table {
 .toast {
 	border-radius: 1rem;
 	color: #212529;
+	line-height: normal;
 }
 
 .toast-header {

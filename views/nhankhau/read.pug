@@ -1,4 +1,129 @@
 extends ../layouts/common.pug
 
+block stylesheet 
+    link(rel="stylesheet", href="/css/nhankhau/read.css")
+
 block content 
-    
+    .container.quicksand.mt-3
+        .row.gutters-sm
+            .col-md-4.mb-3
+                .card
+                    .card-body
+                        .d-flex.flex-column.align-items-center.text-center
+                            i.fad.fa-user-circle.fs-1
+                            .mt-3
+                                .h3= nhanKhau.hoVaTen
+                                p.text-secondary.mb-1= nhanKhau.diaChi
+                                a.btn.btn-tung.btn-tung-hover.me-3(href="/nhan-khau/"+nhanKhau._id+"/cap-nhat") Cập nhật
+                                a.btn.btn-outline-danger(href="/nhan-khau/"+nhanKhau._id+"/xoa") Xoá
+                if cachLy
+                    .card.mt-3
+                        .card-body
+                            | Mức độ cách ly 
+                            .badge.bg-danger= cachLy.mucDo 
+                            |  nên đã cách ly tại 
+                            .badge.bg-danger=cachLy.noiCachLy
+                            |  bắt đầu từ ngày 
+                            .badge.bg-danger=cachLy.thoiGian.toISOString().slice(0,10).split("-").reverse().join("/")
+                            | .
+                    //- ul.list-group.list-group-flush
+                    //-     li.list-group-item.d-flex.justify-content-between.align-items-center.flex-wrap
+                    //-         h6.mb-0.fw-bold
+                    //-             svg.feather.feather-globe.mr-2.icon-inline(xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round')
+                    //-                 circle(cx='12' cy='12' r='10')
+                    //-                 line(x1='2' y1='12' x2='22' y2='12')
+                    //-                 path(d='M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z')
+                    //-             | Website
+                    //-         span.text-secondary https://bootdey.com
+            .col-md-8
+                .row.gutters-sm
+                    .col-md-6
+                        .card.mb-3
+                            .card-body
+                                .row
+                                    .col-sm-4
+                                        h6.mb-0.fw-bold Họ và tên
+                                    .col-sm-8= nhanKhau.hoVaTen
+                                hr
+                                .row
+                                    .col-sm-4
+                                        h6.mb-0.fw-bold Số CCCD/CMT
+                                    .col-sm-8= nhanKhau.soCCCD
+                                hr
+                                .row
+                                    .col-sm-4
+                                        h6.mb-0.fw-bold Ngày sinh
+                                    .col-sm-8= nhanKhau.namSinh.toISOString().slice(0,10)
+                                hr
+                                .row
+                                    .col-sm-4
+                                        h6.mb-0.fw-bold Giới tính
+                                    .col-sm-8= nhanKhau.gioiTinh
+                    .col-md-6
+                        .card.mb-3
+                            .card-body
+                                .row
+                                    .col-sm-4
+                                        h6.mb-0.fw-bold Mã hộ khẩu
+                                    .col-sm-8= nhanKhau.maHoKhau
+                                hr
+                                .row
+                                    .col-sm-4
+                                        h6.mb-0.fw-bold Số điện thoại
+                                    .col-sm-8= nhanKhau.soDienThoai
+                                hr
+                                .row
+                                    .col-sm-4
+                                        h6.mb-0.fw-bold Địa chỉ
+                                    .col-sm-8= nhanKhau.diaChi
+                                hr
+                                .row
+                                    .col-sm-4
+                                        h6.mb-0.fw-bold Trạng Thái
+                                    .col-sm-8= nhanKhau.trangThai
+                    if khaiBao
+                        .col-sm-12.mb-3
+                            .card.h-100
+                                .card-body
+                                    .h4.text-center.fw-bold Khai báo cách ly
+                                    hr
+                                    .row
+                                        .col-sm-4
+                                            h6.mb-0.fw-bold Ngày khai báo
+                                        .col-sm-8= khaiBao.ngayKhaiBao.toISOString().slice(0,10)
+                                    hr
+                                    .row
+                                        .col-sm-4
+                                            h6.mb-0.fw-bold Vùng dịch
+                                        .col-sm-8= khaiBao.vungDich.join("; ")
+                                    hr
+                                    .row
+                                        .col-sm-4
+                                            h6.mb-0.fw-bold Tiếp xúc Covid
+                                        .col-sm-8= khaiBao.tiepXuc.join("; ")
+                                    hr
+                                    .row
+                                        .col-sm-4
+                                            h6.mb-0.fw-bold Bệnh nền
+                                        .col-sm-8= khaiBao.benhNen.join("; ")
+                    each tc in testCovids
+                        .col-sm-6.mb-3
+                            .card.h-100
+                                .card-body
+                                    .h4.text-center.fw-bold Test Covid
+                                    hr
+                                    .row
+                                        .col-sm-4
+                                            h6.mb-0.fw-bold Thời điểm test
+                                        .col-sm-8= tc.thoiDiemTest.toLocaleString()
+                                    hr
+                                    .row
+                                        .col-sm-4
+                                            h6.mb-0.fw-bold Hình thức
+                                        .col-sm-8= tc.hinhThucTest
+                                    hr
+                                    .row
+                                        .col-sm-4
+                                            h6.mb-0.fw-bold Kết quả
+                                        .col-sm-8= tc.ketQua
+                                    

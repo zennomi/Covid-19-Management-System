@@ -12,9 +12,9 @@ block content
                 th Số thành viên
             each hk in hoKhaus
                 tr.info
-                    td= hk._id
+                    td.text-center= hk._id
                     td= hk.hoVaTen
-                    td.text-center= hk.count
+                    td.text-center.text-center= hk.count
                     td.d-flex.justify-content-around
                         a.d-block.btn.btn-secondary.me-1(href="/nhan-khau/?maHoKhau="+hk._id) Chi tiết
     script(src="/js/searching-table.js") 

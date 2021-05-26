@@ -173,9 +173,11 @@ app.post('/auth/login', async (req, res) => {
   }
   if (!user) {
     req.flash('warning', 'Sai thông tin người dùng. Vui lòng nhập lại.');
-    return res.render('login');
+    req.flash('username', req.body.username);
+    req.flash('password', req.body.password);
+    return res.redirect('/auth/login/#login');
   }
-  req.flash('alert', 'Đăng nhập thành công.');
+  req.flash('alert', 'Đăng nhập thành công với tài khoản '+username+'.');
   res.cookie('isLogged', true, { expires: new Date(Date.now() + 7 * 24 * 3600 * 1000), httpOnly: true });
   res.redirect('/dashboard');
 })
