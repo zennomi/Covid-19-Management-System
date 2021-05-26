@@ -7,7 +7,6 @@ function searchTable(input, tableId) {
 
     var rowContent = tr[i].textContent;
     rowContent = rowContent.replace(/[\s]+/g, ' ');
-    //console.log(rowContent);    
 
     if (rowContent) {
       if (rowContent.toUpperCase().includes(filter)) {
