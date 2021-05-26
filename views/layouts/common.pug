@@ -8,6 +8,8 @@ html(lang="en")
         link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=IBM Plex Sans')
         link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Quicksand')
         link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto Condensed')
+        //- link(rel="preconnect" href="https://fonts.gstatic.com")
+        //- link(href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet")
         link(type='text/css' rel='stylesheet' href='/css/reset.css')
         link(type='text/css' rel='stylesheet' href='/css/style.css')
         link(rel='stylesheet', type='text/css', href='//cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@8af0edd/css/all.css')
@@ -19,7 +21,7 @@ html(lang="en")
         .position-fixed.bottom-0.start-0.p-3(style='z-index: 5')
             #alertToast.toast(role='alert' aria-live='assertive' aria-atomic='true')
                 .toast-header
-                    strong.me-auto Hệ thống
+                    strong.me-auto.fm-bold Hệ thống
                     small Vừa xong
                     button.btn-close(type='button' data-bs-dismiss='toast' aria-label='Close')
                 .toast-body#toastContent= messages.alert
@@ -27,7 +29,7 @@ html(lang="en")
         #nav
             .logo
                 //- img(src='https://www.coronavirus.gov.hk/images/icon-7-ways.png')
-                i.fad.fa-virus-slash.text-white(style="font-size: 4.8rem;")
+                i.fad.fa-virus-slash.text-white.mt-3(style="font-size: 4.8rem;")
                 .title
                     h1 COVID-19 MANAGER APP
             .log

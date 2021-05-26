@@ -79,7 +79,6 @@ module.exports = {
     } catch (err) {
       return res.render('error', { err });
     }
-    console.log(nhanKhau);
     req.flash('alert', `Cập nhật nhân khẩu ${nhanKhau.hoVaTen} hộ khẩu mã ${nhanKhau.maHoKhau} thành công.`);
     res.redirect('/nhan-khau/');
   },

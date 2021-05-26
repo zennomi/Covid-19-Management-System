@@ -9,7 +9,6 @@ module.exports = {
         } catch (err) {
             return res.render('error', { err });
         }
-        console.log(testCovids);
         res.render('testcovid/index', { testCovids });
     },
     create: (req, res) => {

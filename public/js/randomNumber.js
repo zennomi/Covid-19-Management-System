@@ -11,7 +11,6 @@ window.addEventListener("load", function(){
                 if (count<10) count = '0' + count;
                 numEleList[index].innerHTML = count;
                 count = Number(count);
-                console.log(index, count, res.result.length);
             }, 100)
         });
     }

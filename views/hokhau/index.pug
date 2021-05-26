@@ -5,7 +5,7 @@ block content
         button.sbutton.btn.btn-tung.align-middle.me-2 Tìm kiếm
         input.me-2.sinput.align-middle.form-control.d-inline(type='text' onkeyup="searchTable(this, 'nhanKhauTable')")
     .p-3
-        table.table.text-white#nhanKhauTable
+        table.table.text-white.w-75.mx-auto#nhanKhauTable
             tr.header.text-center
                 th Mã hộ khẩu
                 th Tên chủ hộ
@@ -14,7 +14,7 @@ block content
                 tr.info
                     td= hk._id
                     td= hk.hoVaTen
-                    td= hk.count
+                    td.text-center= hk.count
                     td.d-flex.justify-content-around
                         a.d-block.btn.btn-secondary.me-1(href="/nhan-khau/?maHoKhau="+hk._id) Chi tiết
     script(src="/js/searching-table.js") 

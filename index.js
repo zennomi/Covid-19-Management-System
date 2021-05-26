@@ -59,7 +59,6 @@ app.get('/api/nhan-khau/', async (req, res) => {
   } catch (err) {
     return res.status(404).json({ msg: err });
   }
-  console.log(nhanKhaus);
   res.json({ result: nhanKhaus });
 })
 
@@ -142,7 +141,6 @@ app.route('/api/nhan-khau/:soCCCD')
 app.use((req, res, next) => {
   // redirect when not logged yet
   res.locals.mainPath = req.path.split("/")[1];
-  console.log(res.locals.mainPath);
   if (!req.cookies.isLogged && req.path != '/auth/login' && req.path != '/') {
     return res.redirect('/');
   }
@@ -170,7 +168,6 @@ app.post('/auth/login', async (req, res) => {
       username: username,
       password: password
     });
-    console.log({ username, password });
   } catch (err) {
     if (err) return res.render(err);
   }

@@ -1,7 +1,12 @@
+@font-face {
+	font-family: 'utm_avo';
+	src: url('/assets/font/utm_avo.ttf');
+}
+
 body
 {
   background-color:#f2f2f2;
-  font-family: 'RobotoDraft', 'Roboto', sans-serif;
+  font-family: 'RobotoDraft', 'Roboto', 'utm_avo', sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 

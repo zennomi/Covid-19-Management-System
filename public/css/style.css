@@ -1,3 +1,18 @@
+@font-face {
+	font-family: 'utm_avo';
+	src: url('/assets/font/utm_avo.ttf');
+}
+
+@font-face {
+	font-family: 'utm_avo_bold';
+	src: url('/assets/font/utm_avo_bold.ttf');
+}
+
+@font-face {
+	font-family: 'utm_centur';
+	src: url('/assets/font/utm_centur.ttf');
+}
+
 body {
 	background-image: linear-gradient(rgba(115, 116, 128, 0.7), rgba(115, 116, 128, 0.7)), url(https://img.nhandan.com.vn/Files/Images/2020/12/28/IMG_7802-1609097292047.JPG);
 	background-position: center;
@@ -7,6 +22,11 @@ h3 {
 	font-weight: 900;
 	font-size: 25px;
 }
+
+.fm-bold {
+	font-family: 'utm_avo_bold';
+}
+
 #nav {
 	max-height: 17vh;
 	width: 100%;
@@ -26,7 +46,7 @@ h3 {
 .title h1 {
 	font-size: 60px;
 	font-weight: 900;
-	font-family: Roboto Condensed;
+	font-family: 'Roboto', 'utm_avo',sans-serif;
 }
 img {
 	max-height: 120px;
@@ -68,7 +88,7 @@ img {
 	font-family: Quicksand;
 }
 .func h3 {
-	font-family: IBM Plex Sans;
+	font-family: Quicksand;
 }
 .func:hover {
 	background: rgba(46, 45, 41, 1);
@@ -141,6 +161,7 @@ table {
 	/* left: 50px;
 	top: 40px; */
 	width: 160vh;
+	font-family: 'utm_centur', 'serif';
 }
 .sbar {
 	height: 5px;
@@ -209,4 +230,8 @@ table {
 	border-top-left-radius: 1rem;
 	border-top-right-radius: 1rem;
 	color: #212529;
+}
+
+.btn {
+	font-family: Quicksand;
 }
