@@ -1,0 +1,22 @@
+extends ./layouts/common.pug
+
+block stylesheet 
+    link(type='text/css' rel='stylesheet' href='/css/dashboard/style.css')
+
+block content 
+    .d-flex.justify-content-around.w-75.mx-auto.flex-wrap(style="opacity: 0.7;")
+        .card.bg-white.mb-2
+            .card-body 
+                canvas#bieuHienChart(width=400 height=400)
+        .card.bg-white.mb-2
+            .card-body 
+                canvas#benhNenChart(width=400 height=400)
+        .card.bg-white.mb-2
+            .card-body 
+                canvas#noiCachLyChart(width=400 height=400)
+        .card.bg-white.mb-2
+            .card-body 
+                canvas#mucDoChart(width=400 height=400)
+block script 
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.3.0/chart.min.js" integrity="sha512-yadYcDSJyQExcKhjKSQOkBKy2BLDoW6WnnGXCAkCoRlpHGpYuVuBqGObf3g/TdB86sSbss1AOP4YlGSb6EKQPg==" crossorigin="anonymous" referrerpolicy="no-referrer")
+    script(src="/js/thongke.js") 

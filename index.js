@@ -87,7 +87,7 @@ app.get('/api/test-covid/', async (req, res) => {
 app.get('/api/cach-ly/', async (req, res) => {
   let cachLys;
   try {
-    cachLys = await TestCovid.find();
+    cachLys = await CachLy.find();
   } catch (err) {
     return res.status(404).json({ msg: err });
   }
@@ -190,6 +190,10 @@ app.get('/auth/logout', (req, res) => {
 
 app.get('/dashboard', (req, res) => {
   res.render('dashboard');
+})
+
+app.get('/thong-ke', (req, res) => {
+  res.render('thongke');
 })
 
 app.listen(port, () => {
