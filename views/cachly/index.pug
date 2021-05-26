@@ -26,7 +26,8 @@ block content
                     td.align-middle= cl.noiCachLy
                     td.align-middle= cl.thoiGian.toISOString().slice(0,10)
                     td.align-middle= cl.mucDo
-                    td.align-middle.d-flex.justify-content-around
-                        a.d-block.btn.btn-secondary.me-1(href="/cach-ly/"+cl._id+"/cap-nhat") Sửa
-                        a.d-block.btn.btn-secondary.me-1(href="/cach-ly/"+cl._id+"/xoa") Xoá
+                    td.align-middle
+                        .d-flex.justify-content-around
+                            a.d-block.btn.btn-secondary.me-1(href="/cach-ly/"+cl._id+"/cap-nhat") Sửa
+                            a.d-block.btn.btn-secondary.me-1(href="/cach-ly/"+cl._id+"/xoa") Xoá
     script(src="/js/searching-table.js") 

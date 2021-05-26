@@ -30,6 +30,7 @@ const nhanKhauRoutes = require('./routes/nhankhau.route');
 const khaiBaoRoutes = require('./routes/khaibao.route');
 const cachLyRoutes = require('./routes/cachly.route');
 const testCovidRoutes = require('./routes/testcovid.route');
+const hoKhauRoutes = require('./routes/hokhau.route');
 
 const app = express();
 
@@ -53,43 +54,77 @@ app.use(require('express-flash')());
 
 app.get('/api/nhan-khau/', async (req, res) => {
   let nhanKhaus;
-    try {
-      nhanKhaus = await NhanKhau.find();
-    } catch (err) {
-      return res.status(404).json({ msg: err });
-    }
-    console.log(nhanKhaus);
-    res.json({result: nhanKhaus});
+  try {
+    nhanKhaus = await NhanKhau.find();
+  } catch (err) {
+    return res.status(404).json({ msg: err });
+  }
+  console.log(nhanKhaus);
+  res.json({ result: nhanKhaus });
 })
 
 app.get('/api/khai-bao/', async (req, res) => {
   let khaiBaos;
-    try {
-      khaiBaos = await KhaiBao.find();
-    } catch (err) {
-      return res.status(404).json({ msg: err });
-    }
-    res.json({result: khaiBaos});
+  try {
+    khaiBaos = await KhaiBao.find();
+  } catch (err) {
+    return res.status(404).json({ msg: err });
+  }
+  res.json({ result: khaiBaos });
 })
 
 app.get('/api/test-covid/', async (req, res) => {
+  let query = req.query || {};
   let testCovids;
-    try {
-      testCovids = await TestCovid.find();
-    } catch (err) {
-      return res.status(404).json({ msg: err });
-    }
-    res.json({result: testCovids});
+  try {
+    testCovids = await TestCovid.find(query);
+  } catch (err) {
+    return res.status(404).json({ msg: err });
+  }
+  res.json({ result: testCovids });
 })
 
 app.get('/api/cach-ly/', async (req, res) => {
   let cachLys;
-    try {
-      cachLys = await TestCovid.find();
-    } catch (err) {
-      return res.status(404).json({ msg: err });
-    }
-    res.json({result: cachLys});
+  try {
+    cachLys = await TestCovid.find();
+  } catch (err) {
+    return res.status(404).json({ msg: err });
+  }
+  res.json({ result: cachLys });
+})
+
+app.get('/api/ho-khau', async (req, res) => {
+  NhanKhau.aggregate([
+      {
+          $group: {
+              _id: "$maHoKhau",
+              count: { $sum: 1 },
+              hoVaTen: {
+                  $push: {
+                      $cond: {
+                          if: { $eq: ["$chuHo", true] },
+                          then: "$hoVaTen",
+                          else: null
+                      }
+                  }
+              }
+          }
+      },
+      {
+          $unwind: "$hoVaTen"
+      },
+      {
+          $match: {
+              hoVaTen: {
+                  $ne: null
+              }
+          }
+      }
+  ], (err, hoKhaus) => {
+      if (err) return res.render('error', { err });
+      res.json({ result: hoKhaus });
+  })
 })
 
 app.route('/api/nhan-khau/:soCCCD')
@@ -101,11 +136,13 @@ app.route('/api/nhan-khau/:soCCCD')
     } catch (err) {
       return res.status(404).json({ msg: err });
     }
-    res.json({nhanKhau});
+    res.json({ nhanKhau });
   })
 
 app.use((req, res, next) => {
   // redirect when not logged yet
+  res.locals.mainPath = req.path.split("/")[1];
+  console.log(res.locals.mainPath);
   if (!req.cookies.isLogged && req.path != '/auth/login' && req.path != '/') {
     return res.redirect('/');
   }
@@ -117,6 +154,7 @@ app.use('/nhan-khau', nhanKhauRoutes);
 app.use('/khai-bao', khaiBaoRoutes);
 app.use('/cach-ly', cachLyRoutes);
 app.use('/test-covid', testCovidRoutes);
+app.use('/ho-khau', hoKhauRoutes);
 
 app.get('/', (req, res) => {
   res.render('login');
@@ -141,7 +179,7 @@ app.post('/auth/login', async (req, res) => {
     return res.render('login');
   }
   req.flash('alert', 'Đăng nhập thành công.');
-  res.cookie('isLogged', true, { expires: new Date(Date.now() + 7 * 24 * 3600), httpOnly: true });
+  res.cookie('isLogged', true, { expires: new Date(Date.now() + 7 * 24 * 3600 * 1000), httpOnly: true });
   res.redirect('/dashboard');
 })
 

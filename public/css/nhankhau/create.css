@@ -1,6 +1,7 @@
 .formpage {
 	/* position: relative; */
-	border: 2px solid rgb(38, 36, 36);
+	border: 2px solid rgb(255, 255, 255);
+	border-radius: 10px;
 	/* width: 169vh;
 	height: 60vh;
 	top: 50px;
@@ -39,8 +40,9 @@
 .flabel {
 	color: white;
 	font-size: 24px;
-	font-family: Quicksand;
-	font-weight: 600;
+	margin-bottom: 5px;
+	/* font: 400 13.3333px Arial; */
+	/* font-weight: 600; */
 }
 .finput {
 	width: 100%;

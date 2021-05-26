@@ -18,9 +18,23 @@ const nhanKhauSchema = new mongoose.Schema({
   soDienThoai: String,
   gioiTinh: {
     type: String,
-    enum: ['NAM', 'NỮ']
+    enum: ['NAM', 'NỮ'],
+    required: true
   },
-  diaChi: String
+  diaChi: String,
+  trangThai: {
+    type: String,
+    enum: ['', 'MỚI SINH', 'ĐÃ MẤT'],
+    default: ''
+  },
+  chuHo: {
+    type: Boolean,
+    default: false
+  },
+  lichSu: {
+    type: String,
+    default: ''
+  }
 })
 
 const NhanKhau = mongoose.model('NhanKhau', nhanKhauSchema);

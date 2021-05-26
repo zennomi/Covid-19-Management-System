@@ -1,4 +1,4 @@
-let input = document.getElementById('soCCCDInput');
+var input = document.getElementById('soCCCDInput');
 let submitBtn = document.getElementById('submitBtn');
 
 input.addEventListener('blur', (e) => {

@@ -25,7 +25,8 @@ block content
                 th Giới tính
                 th Địa chỉ
                 th Số điện thoại
-                th
+                th Ghi chú
+                th Thao tác
             each nhanKhau in nhanKhaus
                 tr.info
                     td= nhanKhau.maHoKhau
@@ -35,6 +36,7 @@ block content
                     td= nhanKhau.gioiTinh
                     td= nhanKhau.diaChi
                     td= nhanKhau.soDienThoai
+                    td= nhanKhau.trangThai
                     td.d-flex.justify-content-around
                         a.d-block.btn.btn-secondary.me-1(href="/nhan-khau/"+nhanKhau._id+"/cap-nhat") Sửa
                         a.d-block.btn.btn-secondary.me-1(href="/nhan-khau/"+nhanKhau._id+"/xoa") Xoá

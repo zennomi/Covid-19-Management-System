@@ -31,7 +31,8 @@ block content
                     td.align-middle= kb.tiepXuc.join("; ")
                     td.align-middle= kb.bieuHien.join("; ")
                     td.align-middle= kb.benhNen.join("; ")
-                    td.align-middle.d-flex.justify-content-around
-                        a.d-block.btn.btn-secondary.me-1(href="/khai-bao/"+kb._id+"/cap-nhat") Sửa
-                        a.d-block.btn.btn-secondary.me-1(href="/khai-bao/"+kb._id+"/xoa") Xoá
+                    td.align-middle
+                        .d-flex.justify-content-around
+                            a.d-block.btn.btn-secondary.me-1(href="/khai-bao/"+kb._id+"/cap-nhat") Sửa
+                            a.d-block.btn.btn-secondary.me-1(href="/khai-bao/"+kb._id+"/xoa") Xoá
     script(src="/js/searching-table.js") 

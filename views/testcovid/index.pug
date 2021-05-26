@@ -26,7 +26,8 @@ block content
                     td.align-middle= tc.thoiDiemTest.toLocaleString()
                     td.align-middle= tc.hinhThucTest
                     td.align-middle= tc.ketQua
-                    td.align-middle.d-flex.justify-content-around
-                        a.d-block.btn.btn-secondary.me-1(href="/test-covid/"+tc._id+"/cap-nhat") Sửa
-                        a.d-block.btn.btn-secondary.me-1(href="/test-covid/"+tc._id+"/xoa") Xoá
+                    td.align-middle
+                        .d-flex.justify-content-around
+                            a.d-block.btn.btn-secondary.me-1(href="/test-covid/"+tc._id+"/cap-nhat") Sửa
+                            a.d-block.btn.btn-secondary.me-1(href="/test-covid/"+tc._id+"/xoa") Xoá
     script(src="/js/searching-table.js") 

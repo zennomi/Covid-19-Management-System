@@ -7,32 +7,45 @@ block content
     .tile.d-block.mb-2
         h2 Thêm thông tin nhân khẩu
     form.d-flex.justify-content-around.w-75.mx-auto.formpage.p-5(action="/nhan-khau/them-moi" method="POST")
-        div.mb-1
-            .form-div.mb-1
-                label.flabel.mb-1(for='name') Họ và tên
+        div.mb-2
+            .form-div.mb-2
+                label.flabel.mb-2(for='name') Họ và tên
                 input.form-control(type='text' name='hoVaTen' required)
-            .form-div.mb-1
-                label.flabel.mb-1(for='cmt') Số CMT/CCCS
+            .form-div.mb-2
+                label.flabel.mb-2(for='cmt') Số CMT/CCCS
                 input.form-control(type='text' name='soCCCD' required)
-            .form-div.mb-1
-                label.flabel.mb-1(for='birth') Ngày sinh
+            .form-div.mb-2
+                label.flabel.mb-2(for='birth') Ngày sinh
                 input.form-control(type='date' name='namSinh' required)
-            .form-div.mb-1
-                label.flabel.mb-1(for='sex') Giới tính
+            .form-div.mb-2
+                label.flabel.mb-2(for='sex') Giới tính
                 select.form-select(name='gioiTinh')
                     option(value='NAM') Nam
                     option(value='NỮ') Nữ
-        div.mb-1
-            .form-div.mb-1
-                label.flabel.mb-1(for='address') Địa chỉ
+        div.mb-2
+            .form-div.mb-2
+                label.flabel.mb-2(for='address') Địa chỉ
                 input.form-control(type='text' name='diaChi' required)
-            .form-div.mb-1
-                label.flabel.mb-1(for='sdt') Số điện thoại
+            .form-div.mb-2
+                label.flabel.mb-2(for='sdt') Số điện thoại
                 input.form-control(type='text' name='soDienThoai' required)
-            .form-div.mb-1
-                label.flabel.mb-1() Mã hộ khẩu
+            .form-div.mb-2
+                label.flabel.mb-2() Mã hộ khẩu
                 input.form-control(type='text' name='maHoKhau' required)
-            .form-div.mb-1
+            .form-div.mb-2
+                .form-check.ms-1
+                    input.form-check-input#chuHo(type="checkbox" name="chuHo" value="true")
+                    label.flabel.fs-5.mb-2(for="chuHo") Là chủ hộ
+            .form-div.mb-2.d-flex.justify-content-around
+                .form-check
+                    input.form-check-input#nhapCu(type="radio" name="trangThai" value="")
+                    label.flabel.fs-5.mb-2(for="nhapCu") Nhập cư
+                .form-check
+                    input.form-check-input#moiSinh(type="radio" name="trangThai" value="MỚI SINH")
+                    label.flabel.fs-5.mb-2(for="moiSinh") Mới sinh 
+                .form-check
+                    input.form-check-input#daMat(type="radio" name="trangThai" value="ĐÃ MẤT")
+                    label.flabel.fs-5.mb-2(for="daMat") Đã mất
             .subm.d-flex.justify-content-around
                 button.btn.btn-tung(type='submit') Lưu
                 a.btn.btn-tung(href="/nhan-khau") Hủy

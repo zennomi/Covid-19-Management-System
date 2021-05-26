@@ -1,11 +1,14 @@
+const CachLy = require("../models/cachly.model");
 const KhaiBao = require("../models/khaibao.model");
 const NhanKhau = require("../models/nhankhau.model");
+const TestCovid = require("../models/testcovid.model");
 
 module.exports = {
   index: async (req, res) => {
+    let query = req.query || {};
     let nhanKhaus;
     try {
-      nhanKhaus = await NhanKhau.find({});
+      nhanKhaus = await NhanKhau.find(query);
     } catch (err) {
       return res.render('error', { err });
     }
@@ -45,24 +48,51 @@ module.exports = {
     res.render('nhankhau/delete', { nhanKhau });
   },
   postCreate: async (req, res) => {
-    NhanKhau.create(req.body, (err, nhanKhau) => {
-      if (err) return res.render('error', { err });
-      res.redirect('/nhan-khau');
-    })
+    let nhanKhau;
+    try {
+      nhanKhau = await NhanKhau.create(req.body);
+      if (nhanKhau.chuHo) {
+        await NhanKhau.updateMany({ _id: { $ne: nhanKhau._id }, chuHo: true, maHoKhau: nhanKhau.maHoKhau }, { chuHo: false });
+      } else {
+        let cungHoKhau = await NhanKhau.find({maHoKhau: nhanKhau.maHoKhau});
+        if (cungHoKhau.length < 2) nhanKhau.chuHo = true;
+        await nhanKhau.save();
+      }
+    } catch (err) {
+      return res.render('error', { err });
+    }
+    req.flash('alert', `Thêm mới nhân khẩu ${nhanKhau.hoVaTen} hộ khẩu mã ${nhanKhau.maHoKhau} thành công.`);
+    res.redirect('/nhan-khau');
   },
   postUpdate: async (req, res) => {
-    NhanKhau.findByIdAndUpdate(req.params.id, req.body, (err, nhanKhau) => {
-      if (err) return res.render('error', { err });
-      res.redirect('/nhan-khau/' + nhanKhau._id + '/cap-nhat');
-    })
+    let nhanKhau;
+    if (!req.body.chuHo) req.body.chuHo = false;
+    try {
+      nhanKhau = await NhanKhau.findByIdAndUpdate(req.params.id, req.body, { new: true });
+      if (nhanKhau.chuHo) {
+        await NhanKhau.updateMany({ _id: { $ne: nhanKhau._id }, chuHo: true, maHoKhau: nhanKhau.maHoKhau }, { chuHo: false });
+      } else {
+        let cungHoKhau = await NhanKhau.find({maHoKhau: nhanKhau.maHoKhau});
+        if (cungHoKhau.length < 2) nhanKhau.chuHo = true;
+        await nhanKhau.save();
+      }
+    } catch (err) {
+      return res.render('error', { err });
+    }
+    console.log(nhanKhau);
+    req.flash('alert', `Cập nhật nhân khẩu ${nhanKhau.hoVaTen} hộ khẩu mã ${nhanKhau.maHoKhau} thành công.`);
+    res.redirect('/nhan-khau/');
   },
   postDelete: async (req, res) => {
     try {
       await NhanKhau.findByIdAndDelete(req.params.id);
-      await KhaiBao.deleteMany({nhanKhauId: req.params.id});
+      await KhaiBao.deleteMany({ nhanKhauId: req.params.id });
+      await CachLy.deleteMany({ nhanKhauId: req.params.id });
+      await TestCovid.deleteMany({ nhanKhauId: req.params.id });
     } catch (err) {
       return res.render('error', { err });
     }
+    req.flash('alert', `Xoá một nhân khẩu thành công.`);
     res.redirect('/nhan-khau/');
   }
 }

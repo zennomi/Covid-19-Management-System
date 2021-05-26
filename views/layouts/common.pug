@@ -16,7 +16,7 @@ html(lang="en")
 
     body
         // toast
-        .position-fixed.bottom-0.end-0.p-3(style='z-index: 5')
+        .position-fixed.bottom-0.start-0.p-3(style='z-index: 5')
             #alertToast.toast(role='alert' aria-live='assertive' aria-atomic='true')
                 .toast-header
                     strong.me-auto Hệ thống
@@ -34,23 +34,23 @@ html(lang="en")
                 a.btn.btn-tung.b2(href="/auth/logout") ĐĂNG XUẤT
         .bar
             .fun
-                a.btn.btn-tung(href="/dashboard") TRANG CHỦ
+                a.btn.btn-tung(class=(mainPath=='dashboard'&&"btn-tung-hover") href="/dashboard") TRANG CHỦ
             .fun
-                a.btn.btn-tung(href="/nhan-khau") NHÂN KHẨU
+                a.btn.btn-tung(class=(mainPath=='nhan-khau'&&"btn-tung-hover") href="/nhan-khau") NHÂN KHẨU
             .fun
-                a.btn.btn-tung(href="#") HỘ KHẨU
+                a.btn.btn-tung(class=(mainPath=='ho-khau'&&"btn-tung-hover") href="/ho-khau") HỘ KHẨU
             .fun
-                a.btn.btn-tung(href="/khai-bao") KHAI BÁO
+                a.btn.btn-tung(class=(mainPath=='khai-bao'&&"btn-tung-hover") href="/khai-bao") KHAI BÁO
             .fun
-                a.btn.btn-tung(href="/test-covid") XÉT NGHIỆM
+                a.btn.btn-tung(class=(mainPath=='test-covid'&&"btn-tung-hover") href="/test-covid") XÉT NGHIỆM
             .fun
-                a.btn.btn-tung(href="/cach-ly") CÁCH LY
+                a.btn.btn-tung(class=(mainPath=='cach-ly'&&"btn-tung-hover") href="/cach-ly") CÁCH LY
         block content
         script(src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous")
         if messages.alert
             script.
                 let toast = new bootstrap.Toast(document.getElementById('alertToast'), {
-                    delay: 3000
+                    delay: 10000
                 });
                 toast.show();
         block script

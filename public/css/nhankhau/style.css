@@ -1,0 +1,231 @@
+body {
+	background-image: linear-gradient(rgba(115, 116, 128, 0.7), rgba(115, 116, 128, 0.7)), url(https://img.nhandan.com.vn/Files/Images/2020/12/28/IMG_7802-1609097292047.JPG);
+	background-position: center;
+	background-size: cover;
+}
+h3 {
+	font-weight: 900;
+	font-size: 25px;
+}
+#nav {
+	max-height: 17vh;
+	width: 100%;
+	padding-left: 20px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.logo {
+	display: flex;
+}
+.title {
+	display: flex;
+	align-items: center;
+	color: white;
+}
+.title h1 {
+	font-size: 60px;
+	font-weight: 900;
+	font-family: Roboto Condensed;
+}
+img {
+	max-height: 120px;
+}
+
+a {
+	color: white;
+}
+.log {
+	display: flex;
+	text-align: right;
+	margin-right: 2%;
+	padding: 0 20px;
+}
+.b1 {
+	margin-right: 30px;
+}
+button {
+	background: rgba(85, 86, 94, 0.7);
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;  
+    width: 100px;
+    font-family: Quicksand;
+    color: white;
+    font-weight: 900;
+}
+button:hover {
+	background: black;
+}
+.compic {
+	height: 100px;
+	max-height: 100px;
+	width: 110px;
+	opacity: 1;
+}
+.bar {
+	display: flex;
+	width: 80%;
+	margin: auto;
+	height: 60px;
+	justify-content: center;
+	align-items: center;
+}
+.fun {
+	flex-basis: 15%;
+	height: 40px;
+}
+.fun button{
+	height: 40px;
+	width: 150px;
+	box-shadow: 0 0 10px 5px gray inset;
+	font-size: 20px;
+	transition: 0.5s;
+}
+
+.subfunc {
+	position: relative;
+	float: right;
+	right: 5vh;
+	top: 4vh;
+}
+.subfunc ul li {
+	padding: 20px;
+}
+.subfunc ul li button{
+	height: 40px;
+	width: 25vh;
+	font-size: 20px;
+	box-shadow: 0 0 10px 5px gray inset;
+}
+.formpage {
+	position: relative;
+	width: 204vh;
+	height: 60vh;
+	top: 50px;
+	left: 10px;
+	display: flex;
+}
+.indi {
+	flex-basis: 30%;
+	width: 56vh;
+	height: 57vh;
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+}
+.presymp {
+	flex-basis: 40%;
+	width: 56vh;
+	height: 57vh;
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+}
+.symp {
+	flex-basis: 20%;
+	width: 56vh;
+	height: 57vh;
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+}
+.form-div {
+	flex-basis: 12%;
+	width: 50vh;
+	margin: auto;
+}
+.flabel {
+	color: white;
+	font-size: 24px;
+	font-family: Quicksand;
+	font-weight: 600;
+}
+.finput {
+	width: 100%;
+	height: 1.5rem;
+	background: none;
+	outline: none;
+	color: white;
+	font-size: 18px;
+	font-weight: 400;
+}
+.fselect {
+	width: 101%;
+	height: 1.7rem;
+	background: none;
+	outline: none;
+	color: white;
+	font-size: 18px;
+	font-weight: 400;
+	border: 2px solid rgb(38, 36, 36);
+}
+.b2 {
+	height: 40px;
+}
+.flabel1 {
+	color: white;
+	font-size: 18px;
+	font-family: Quicksand;
+	font-weight: 600;
+}
+.symptom {
+	flex-basis: 40%;
+	width: 50vh;
+	border: 2px solid rgb(38, 36, 36);
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+}
+
+.tile {
+	position: relative;
+	height: 5px;
+	color: white;
+	left: 68vh;
+	font-size: 40px;
+	font-weight: 900;
+	font-family: Quicksand;
+}
+
+table {
+	border-collapse: collapse;
+	font-size: 20px;
+	color: white;
+	width: 100%;
+	table-layout: fixed;
+}
+table th {
+	height: 40px;
+	text-align: center;
+	border: 2px solid white;
+	line-height: 40px;
+	background: rgba(44, 56, 47, 0.7);
+	table-layout: fixed;
+	white-space: nowrap;
+	width: 80px;
+	overflow: hidden;
+}
+table td {
+	height: 30px;
+	text-align: center;
+	border: 2px solid white;
+	width: 200px;
+}
+.symp table th {
+	height: 40px;
+	text-align: center;
+	border: 2px solid white;
+	line-height: 40px;
+	background: rgba(44, 56, 47, 0.7);
+	table-layout: fixed;
+	white-space: nowrap;
+	width: 120px;
+	overflow: hidden;
+}
+.fixed {
+	background: rgba(44, 56, 47, 0.7);
+}
+
+

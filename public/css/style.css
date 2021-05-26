@@ -100,7 +100,7 @@ a {
     font-weight: 900;
 	box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
-.btn-tung:hover {
+.btn-tung-hover, .btn-tung:hover {
 	color: white;
 	background: #212529;
 }
@@ -182,6 +182,7 @@ table {
 .info td {
 	border: 1px solid white;
 	padding: 5px;
+	line-height: normal;
 }
 .subfunc {
 	position: relative;
@@ -197,4 +198,15 @@ table {
 	width: 25vh;
 	font-size: 20px;
 	box-shadow: 0 0 10px 5px gray inset;
+}
+
+.toast {
+	border-radius: 1rem;
+	color: #212529;
+}
+
+.toast-header {
+	border-top-left-radius: 1rem;
+	border-top-right-radius: 1rem;
+	color: #212529;
 }

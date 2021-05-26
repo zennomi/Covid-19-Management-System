@@ -17,7 +17,9 @@ window.addEventListener("load", function(){
     }
     
     fetchAndCountNum('/api/nhan-khau', 0);
+    fetchAndCountNum('/api/ho-khau', 1);
     fetchAndCountNum('/api/khai-bao', 2);
     fetchAndCountNum('/api/test-covid', 3);
+    fetchAndCountNum(encodeURI('/api/test-covid?ketQua=DƯƠNG+TÍNH'), 4);
     fetchAndCountNum('/api/cach-ly', 5);
 });
