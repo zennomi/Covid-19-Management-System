@@ -8,36 +8,41 @@ head
 	link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css")
 	link(rel='stylesheet' type='text/css' href='/css/login/Footer.css')
 	link(rel='stylesheet', type='text/css', href='//cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@8af0edd/css/all.css')
+	link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Quicksand')
 body
-	.jumbotron.bg-cover.text-white.mb-0.rounded-0(style='background: url(/assets/img/bg.jpg); height: 100vh')
-		.container.py-2.text-center
+	.jumbotron.bg-cover.text-white.mb-0.rounded-0(style='height: 100vh; background: none;')
+		.container.py-1.text-center
 			h1.display-4.font-weight-bold WEB QUẢN LÝ DỊCH TỄ COVID
 			//- p.font-italic.mb-0 Using simple jumbotron-style component, create a nice Bootstrap 4 header with a background image.
 			//- p.font-italic
 			//- 	| Snippe by
 			//- 	a.text-white(href='https://bootstrapious.com')
 					u Bootstrapious
-			a.btn.btn-outline-light.px-5(href='#login') ĐĂNG NHẬP
+			a.btn.btn-light.px-5.mr-3(href='#login' style="font-family: 'Quicksand';") ĐĂNG NHẬP
+			a.btn.btn-outline-light.px-5.mr-3(href='https://github.com/zennomi/Covid-19-Management-System' style="font-family: 'Quicksand';" target="_blank")
+				i.fab.fa-github
+				|    GITHUB
 
-	.login-wrap#login
-		.login-html
-			input#tab-1.sign-in(type='radio' name='tab' checked)
-			label.tab(for='tab-1') ĐĂNG NHẬP
-			input#tab-2.sign-up(type='radio' name='tab')
-			label.tab(for='tab-2')
-			form.login-form(action="/auth/login" method="POST")
-				.sign-in-htm
-					.group
-						label.label(for='user') Tên tài khoản
-						input#user.input(type='text' name='username' required value=messages.username&&messages.username[0])
-					.group
-						label.label(for='pass') Mật khẩu
-						input#pass.input(type='password' data-type='password' name="password" required value=messages.password&&messages.password[0])
-					if (messages.warning)
+	.login-area
+		.login-wrap#login
+			.login-html
+				input#tab-1.sign-in(type='radio' name='tab' checked)
+				label.tab(for='tab-1') ĐĂNG NHẬP
+				input#tab-2.sign-up(type='radio' name='tab')
+				label.tab(for='tab-2')
+				form.login-form(action="/auth/login" method="POST")
+					.sign-in-htm
 						.group
-							.alert.alert-danger= messages.warning
-					.group
-						input.button(type='submit' value='Đăng nhập')
+							label.label(for='user') Tên tài khoản
+							input#user.input.quicksand(type='text' name='username' required value=messages.username&&messages.username[0])
+						.group
+							label.label(for='pass') Mật khẩu
+							input#pass.input.quicksand(type='password' data-type='password' name="password" required value=messages.password&&messages.password[0])
+						if (messages.warning)
+							.group
+								.alert.alert-danger= messages.warning
+						.group
+							input.button.quicksand(type='submit' value='Đăng nhập')
 				//- .sign-up-htm
 				//- 	.group
 				//- 		label.label(for='user') Username
@@ -116,5 +121,5 @@ body
 							a.facebook(href='https://www.facebook.com/ngdatuananh/')
 								i.fab.fa-facebook
 						li
-							a.dribbble(href='#')
+							a.dribbble(href='https://github.com/zennomi/Covid-19-Management-System')
 								i.fab.fa-github
