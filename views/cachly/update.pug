@@ -40,6 +40,6 @@ block content
             .form-div.mb-1
                 label.flabel.mb-1(for='cldate') Ngày bắt đầu cách ly
                 input.form-control(type='date' name='thoiGian' required value=cachLy.thoiGian.toISOString().slice(0,10))
-            .subm
-                button#submitBtn.btn.btn-tung(type='submit') Lưu
-                a.btn.btn-tung(href="/cach-ly")
+            .subm.d-flex.justify-content-around
+                    button.d-block#submitBtn.btn.btn-tung(type='submit') Lưu
+                    a.d-block.btn.btn-tung(href="/cach-ly") Trở về

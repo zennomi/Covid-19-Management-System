@@ -33,8 +33,9 @@ block content
                     td= nhanKhau.diaChi
                     td.text-center= nhanKhau.soDienThoai
                     td= nhanKhau.trangThai
-                    td.d-flex.justify-content-around
-                        a.d-block.btn.btn-secondary.me-1(href="/nhan-khau/"+nhanKhau._id+"/chi-tiet") Xem
-                        a.d-block.btn.btn-secondary.me-1(href="/nhan-khau/"+nhanKhau._id+"/cap-nhat") Sửa
-                        a.d-block.btn.btn-secondary.me-1(href="/nhan-khau/"+nhanKhau._id+"/xoa") Xoá
+                    td.align-middle
+                        .d-flex.justify-content-around
+                            a.d-block.btn.btn-secondary.me-1(href="/nhan-khau/"+nhanKhau._id+"/chi-tiet") Xem
+                            a.d-block.btn.btn-secondary.me-1(href="/nhan-khau/"+nhanKhau._id+"/cap-nhat") Sửa
+                            a.d-block.btn.btn-secondary.me-1(href="/nhan-khau/"+nhanKhau._id+"/xoa") Xoá
     script(src="/js/searching-table.js") 
