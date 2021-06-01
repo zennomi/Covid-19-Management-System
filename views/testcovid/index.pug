@@ -12,7 +12,6 @@ block content
                 th Họ và tên
                 th Ngày sinh
                 th Giới tính
-                th Địa chỉ
                 th Thời điểm test
                 th Hình thức
                 th Kết quả
@@ -22,7 +21,6 @@ block content
                     td.align-middle= tc.nhanKhauId.hoVaTen
                     td.align-middle= tc.nhanKhauId.namSinh.toISOString().slice(0,10)
                     td.align-middle= tc.nhanKhauId.gioiTinh
-                    td.align-middle= tc.nhanKhauId.diaChi
                     td.align-middle= tc.thoiDiemTest.toLocaleString()
                     td.align-middle= tc.hinhThucTest
                     td.align-middle= tc.ketQua

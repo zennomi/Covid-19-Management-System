@@ -25,12 +25,12 @@ block content
             each nhanKhau in nhanKhaus
                 tr.info
                     td.text-center
-                        a(href="/nhan-khau?maHoKhau="+nhanKhau.maHoKhau)= nhanKhau.maHoKhau
+                        a(href="/nhan-khau?hoKhauId="+nhanKhau.hoKhauId._id)= nhanKhau.hoKhauId.maHoKhau
                     td.text-center= nhanKhau.soCCCD
                     td= nhanKhau.hoVaTen
                     td= nhanKhau.namSinh.toISOString().slice(0,10)
                     td.text-center= nhanKhau.gioiTinh
-                    td= nhanKhau.diaChi
+                    td.text-center= nhanKhau.hoKhauId.diaChi
                     td.text-center= nhanKhau.soDienThoai
                     td= nhanKhau.trangThai
                     td.align-middle

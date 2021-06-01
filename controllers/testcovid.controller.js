@@ -2,7 +2,7 @@ const NhanKhau = require("../models/nhankhau.model");
 const TestCovid = require("../models/testcovid.model");
 
 module.exports = {
-    index: async (req, res) => {
+    index: async(req, res) => {
         let testCovids;
         try {
             testCovids = await TestCovid.find({}).populate('nhanKhauId');
@@ -14,7 +14,7 @@ module.exports = {
     create: (req, res) => {
         res.render('testcovid/create');
     },
-    update: async (req, res) => {
+    update: async(req, res) => {
         let testCovid;
         try {
             testCovid = await TestCovid.findById(req.params.id).populate('nhanKhauId');
@@ -24,7 +24,7 @@ module.exports = {
         }
         res.render('testcovid/update', { testCovid });
     },
-    read: async (req, res) => {
+    read: async(req, res) => {
         let nhanKhau;
         try {
             nhanKhau = await NhanKhau.findById(req.params.id);
@@ -34,7 +34,7 @@ module.exports = {
         }
         res.render('nhankhau/read', { nhanKhau });
     },
-    delete: async (req, res) => {
+    delete: async(req, res) => {
         let testCovid;
         try {
             testCovid = await TestCovid.findById(req.params.id);
@@ -44,12 +44,12 @@ module.exports = {
         }
         res.render('testcovid/delete', { testCovid });
     },
-    postCreate: async (req, res) => {
+    postCreate: async(req, res) => {
         let reqBody = req.body;
         let matchedNK, newTC;
         try {
             matchedNK = await NhanKhau.findOne({ soCCCD: reqBody.soCCCD });
-            if (!matchedNK) throw new Error("not found");
+            if (!matchedNK) throw ("not found");
         } catch (err) {
             return res.status(404).render('error', { err });
         }
@@ -64,9 +64,10 @@ module.exports = {
         } catch (err) {
             return res.status(404).render('error', { err });
         }
+        req.io.emit('test-covid:change', 1);
         res.redirect('/test-covid');
     },
-    postUpdate: async (req, res) => {
+    postUpdate: async(req, res) => {
         let reqBody = req.body;
         let testCovid;
         try {
@@ -85,9 +86,10 @@ module.exports = {
         }
         res.redirect('/test-covid')
     },
-    postDelete: async (req, res) => {
+    postDelete: async(req, res) => {
         TestCovid.findByIdAndDelete(req.params.id, (err, result) => {
             if (err) return res.render('error', { err });
+            req.io.emit('test-covid:change', -1);
             res.redirect('/test-covid');
         })
     }

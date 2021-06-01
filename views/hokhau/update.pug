@@ -1,0 +1,28 @@
+extends ../layouts/common.pug
+
+block stylesheet 
+    link(rel="stylesheet", href="/css/nhankhau/create.css")
+
+block content
+    .tile.d-block.mb-2
+        h2 Thêm thông tin hộ khẩu
+
+    form.d-flex.justify-content-around.w-75.mx-auto.formpage.p-5.mb-3(action="/ho-khau/" + hoKhau._id +"/cap-nhat" method="POST")
+        div.mb-2
+            .form-div.mb-2
+                label.flabel.mb-1(for='name') Mã hộ khẩu
+                input.form-control(type='text' name='maHoKhau' pattern='^[A-Za-z0-9]{0,}' value=hoKhau.maHoKhau required)
+            .form-div.mb-2
+                label.flabel.mb-1(for='sdt') Địa chỉ
+                input.form-control(type='text' name='diaChi' value=hoKhau.diaChi required)
+        div.mb-2
+            .h4.text-white.quicksand Chủ hộ khẩu 
+            .row
+                each nhanKhau in hoKhau.nhanKhau 
+                    .col
+                        .form-check
+                            input.form-check-input(type="radio" name="chuHoKhauId" value=nhanKhau._id checked=hoKhau.chuHoKhauId && String(nhanKhau._id)==hoKhau.chuHoKhauId._id)
+                            label.flabel.form-check-label= nhanKhau.hoVaTen + " - Số CCCD: " + nhanKhau.soCCCD
+            .subm.d-flex.justify-content-around
+                button.btn.btn-tung(type='submit') Lưu
+                a.btn.btn-tung(href="/ho-khau") Hủy

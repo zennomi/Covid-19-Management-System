@@ -1,0 +1,21 @@
+extends ../layouts/common.pug
+
+block stylesheet 
+    link(rel="stylesheet", href="/css/nhankhau/create.css")
+
+block content
+    .tile.d-block.mb-2
+        h2 Thêm thông tin hộ khẩu
+
+    form.d-flex.justify-content-around.w-75.mx-auto.formpage.p-5.mb-3(action="/ho-khau/them-moi" method="POST")
+        div.mb-2
+            .form-div.mb-2
+                label.flabel.mb-1(for='name') Mã hộ khẩu
+                input.form-control(type='text' name='maHoKhau' pattern='^[A-Za-z0-9]{0,}' required)
+        div.mb-2
+            .form-div.mb-2
+                label.flabel.mb-1(for='sdt') Địa chỉ
+                input.form-control(type='text' name='diaChi' required)
+            .subm.d-flex.justify-content-around
+                button.btn.btn-tung(type='submit') Lưu
+                a.btn.btn-tung(href="/ho-khau") Hủy

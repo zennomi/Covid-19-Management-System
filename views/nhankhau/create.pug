@@ -22,9 +22,6 @@ block content
                 select.form-select(name='gioiTinh')
                     option(value='NAM') Nam
                     option(value='NỮ') Nữ
-            .form-div.mb-2
-                label.flabel.mb-1(for='address') Địa chỉ
-                input.form-control(type='text' name='diaChi' required)
         div.mb-2
             .form-div.mb-2
                 label.flabel.mb-1(for='sdt') Số điện thoại
@@ -32,10 +29,6 @@ block content
             .form-div.mb-2
                 label.flabel.mb-1() Mã hộ khẩu
                 input.form-control(type='text' name='maHoKhau' required pattern='^[A-Za-z0-9]{0,}' value=query.maHoKhau)
-            .form-div.mb-2
-                .form-check.ms-1
-                    input.form-check-input#chuHo(type="checkbox" name="chuHo" value="true")
-                    label.flabel.fs-5.mb-2(for="chuHo") Là chủ hộ
             .form-div.mb-2
                 label.flabel.mb-1(for='sex') Trạng thái
                 select.form-select(name='trangThai')

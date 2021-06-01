@@ -2,7 +2,7 @@ const NhanKhau = require("../models/nhankhau.model");
 const CachLy = require("../models/cachly.model");
 
 module.exports = {
-    index: async (req, res) => {
+    index: async(req, res) => {
         let cachLys;
         try {
             cachLys = await CachLy.find({}).populate('nhanKhauId');
@@ -14,7 +14,7 @@ module.exports = {
     create: (req, res) => {
         res.render('cachly/create');
     },
-    update: async (req, res) => {
+    update: async(req, res) => {
         let cachLy;
         try {
             cachLy = await CachLy.findById(req.params.id).populate('nhanKhauId');
@@ -24,7 +24,7 @@ module.exports = {
         }
         res.render('cachly/update', { cachLy });
     },
-    read: async (req, res) => {
+    read: async(req, res) => {
         let nhanKhau;
         try {
             nhanKhau = await NhanKhau.findById(req.params.id);
@@ -34,7 +34,7 @@ module.exports = {
         }
         res.render('nhankhau/read', { nhanKhau });
     },
-    delete: async (req, res) => {
+    delete: async(req, res) => {
         let cachLy;
         try {
             cachLy = await CachLy.findById(req.params.id);
@@ -44,12 +44,12 @@ module.exports = {
         }
         res.render('cachly/delete', { cachLy });
     },
-    postCreate: async (req, res) => {
+    postCreate: async(req, res) => {
         let reqBody = req.body;
         let matchedNK, newCL;
         try {
             matchedNK = await NhanKhau.findOne({ soCCCD: reqBody.soCCCD });
-            if (!matchedNK) throw new Error("not found");
+            if (!matchedNK) throw ("not found");
         } catch (err) {
             return res.status(404).render('error', { err });
         }
@@ -64,9 +64,10 @@ module.exports = {
         } catch (err) {
             return res.status(404).render('error', { err });
         }
+        req.io.emit('cach-ly:change', 1);
         res.redirect('/cach-ly');
     },
-    postUpdate: async (req, res) => {
+    postUpdate: async(req, res) => {
         let reqBody = req.body;
         let cachLy;
         try {
@@ -85,9 +86,10 @@ module.exports = {
         }
         res.redirect('/cach-ly')
     },
-    postDelete: async (req, res) => {
+    postDelete: async(req, res) => {
         CachLy.findByIdAndDelete(req.params.id, (err, result) => {
             if (err) return res.render('error', { err });
+            req.io.emit('cach-ly:change', -1);
             res.redirect('/cach-ly');
         })
     }

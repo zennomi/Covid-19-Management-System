@@ -13,7 +13,7 @@ block content
                             i.fad.fa-user-circle.fs-1
                             .mt-3
                                 .h3= nhanKhau.hoVaTen
-                                p.text-secondary.mb-1= nhanKhau.diaChi
+                                //- p.text-secondary.mb-1= nhanKhau.diaChi
                                 a.btn.btn-tung.btn-tung-hover.me-3(href="/nhan-khau/"+nhanKhau._id+"/cap-nhat") Cập nhật
                                 a.btn.btn-outline-danger(href="/nhan-khau/"+nhanKhau._id+"/xoa") Xoá
                 if cachLy
@@ -71,11 +71,6 @@ block content
                                     .col-sm-4
                                         h6.mb-0.fw-bold Số điện thoại
                                     .col-sm-8= nhanKhau.soDienThoai
-                                hr
-                                .row
-                                    .col-sm-4
-                                        h6.mb-0.fw-bold Địa chỉ
-                                    .col-sm-8= nhanKhau.diaChi
                                 hr
                                 .row
                                     .col-sm-4

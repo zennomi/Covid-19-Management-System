@@ -12,7 +12,6 @@ block content
                 th Họ và tên
                 th Ngày sinh
                 th Giới tính
-                th Địa chỉ
                 th Ngày khai
                 th Vùng dịch
                 th Tiếp xúc Covid
@@ -25,7 +24,6 @@ block content
                     td.align-middle= kb.nhanKhauId.hoVaTen
                     td.align-middle= kb.nhanKhauId.namSinh.toISOString().slice(0,10)
                     td.align-middle= kb.nhanKhauId.gioiTinh
-                    td.align-middle= kb.nhanKhauId.diaChi
                     td.align-middle= kb.ngayKhaiBao.toISOString().slice(0,10)
                     td.align-middle= kb.vungDich.join("; ")
                     td.align-middle= kb.tiepXuc.join("; ")
