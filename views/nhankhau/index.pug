@@ -3,39 +3,40 @@ extends ../layouts/common.pug
 block content
     if query.maHoKhau
         .h3.ms-5.text-white.quicksand.fw-bold Nhân khẩu thuộc hộ khẩu mã #{query.maHoKhau}
-    form.mb-2
+    form.mb-2.container
         button.sbutton.btn.btn-tung.align-middle.me-2 Tìm kiếm
         input.me-2.sinput.align-middle.form-control.d-inline(type='text' onkeyup="searchTable(this, 'nhanKhauTable')")
         if query.maHoKhau
             a.sbutton.btn.btn-tung(href="/nhan-khau/them-moi?maHoKhau="+query.maHoKhau) Thêm nhân khẩu mới vào hộ này
         else
             a.sbutton.btn.btn-tung(href="/nhan-khau/them-moi") Thêm nhân khẩu mới
-    .px-3
-        table.table.text-white#nhanKhauTable
-            tr.header.text-center
-                th Mã hộ khẩu
-                th Số CMND
-                th Họ và tên
-                th Ngày sinh
-                th Giới tính
-                th Địa chỉ
-                th Số điện thoại
-                th Ghi chú
-                th Thao tác
-            each nhanKhau in nhanKhaus
-                tr.info
-                    td.text-center
-                        a(href="/nhan-khau?hoKhauId="+nhanKhau.hoKhauId._id)= nhanKhau.hoKhauId.maHoKhau
-                    td.text-center= nhanKhau.soCCCD
-                    td= nhanKhau.hoVaTen
-                    td= nhanKhau.namSinh.toISOString().slice(0,10)
-                    td.text-center= nhanKhau.gioiTinh
-                    td.text-center= nhanKhau.hoKhauId.diaChi
-                    td.text-center= nhanKhau.soDienThoai
-                    td= nhanKhau.trangThai
-                    td.align-middle
-                        .d-flex.justify-content-around
-                            a.d-block.btn.btn-secondary.me-1(href="/nhan-khau/"+nhanKhau._id+"/chi-tiet") Xem
-                            a.d-block.btn.btn-secondary.me-1(href="/nhan-khau/"+nhanKhau._id+"/cap-nhat") Sửa
-                            a.d-block.btn.btn-secondary.me-1(href="/nhan-khau/"+nhanKhau._id+"/xoa") Xoá
+    .container
+        .table-responsive
+            table.table.text-white#nhanKhauTable
+                tr.header.text-center
+                    th Mã hộ khẩu
+                    th Số CMND
+                    th Họ và tên
+                    th Ngày sinh
+                    th Giới tính
+                    th Địa chỉ
+                    th Số điện thoại
+                    th Ghi chú
+                    th Thao tác
+                each nhanKhau in nhanKhaus
+                    tr.info
+                        td.text-center
+                            a(href="/nhan-khau?hoKhauId="+nhanKhau.hoKhauId._id)= nhanKhau.hoKhauId.maHoKhau
+                        td.text-center= nhanKhau.soCCCD
+                        td= nhanKhau.hoVaTen
+                        td= nhanKhau.namSinh.toISOString().slice(0,10)
+                        td.text-center= nhanKhau.gioiTinh
+                        td.text-center= nhanKhau.hoKhauId.diaChi
+                        td.text-center= nhanKhau.soDienThoai
+                        td= nhanKhau.trangThai
+                        td.align-middle
+                            .d-flex.justify-content-around
+                                a.d-block.btn.btn-secondary.me-1(href="/nhan-khau/"+nhanKhau._id+"/chi-tiet") Xem
+                                a.d-block.btn.btn-secondary.me-1(href="/nhan-khau/"+nhanKhau._id+"/cap-nhat") Sửa
+                                a.d-block.btn.btn-secondary.me-1(href="/nhan-khau/"+nhanKhau._id+"/xoa") Xoá
     script(src="/js/searching-table.js") 

@@ -1,11 +1,11 @@
 extends ../layouts/common.pug
 
 block content 
-    form.mb-2
+    form.mb-2.container
         button.sbutton.btn.btn-tung.align-middle.me-2 Tìm kiếm
         input.me-2.sinput.align-middle.form-control.d-inline(type='text' onkeyup="searchTable(this, 'nhanKhauTable')")
         a.sbutton.btn.btn-tung(href="/khai-bao/them-moi") Thêm khai báo mới
-    .table-responsive.px-5
+    .table-responsive.container
         table.table.text-white#nhanKhauTable
             tr.header.text-center
                 th Số CCCD/CMT

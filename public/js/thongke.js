@@ -1,4 +1,3 @@
-
 fetch('/api/khai-bao/').then(res => res.json()).then(res => {
     let bieuHienData = {};
     res.result.forEach(cl => {
@@ -8,8 +7,7 @@ fetch('/api/khai-bao/').then(res => res.json()).then(res => {
         })
     })
     new Chart(
-        document.getElementById('bieuHienChart'),
-        {
+        document.getElementById('bieuHienChart'), {
             type: 'bar',
             data: {
                 labels: Object.keys(bieuHienData),
@@ -43,8 +41,7 @@ fetch('/api/khai-bao/').then(res => res.json()).then(res => {
         })
     })
     new Chart(
-        document.getElementById('benhNenChart'),
-        {
+        document.getElementById('benhNenChart'), {
             type: 'bar',
             data: {
                 labels: Object.keys(benhNenData),
@@ -86,14 +83,14 @@ fetch('/api/cach-ly/').then(res => res.json()).then(res => {
         type: 'pie',
         data: {
             labels: Object.keys(noiCLData),
-                datasets: [{
-                    label: 'Thống kê nơi cách ly',
-                    data: Object.values(noiCLData),
-                    backgroundColor: ["#db504a","#e3b505","#8896ab","#084c61","#4f6d7a","#56a3a6"],
-                    borderColor: '#fff',
-                    borderRadius: 5,
-                    borderWidth: 2
-                }]
+            datasets: [{
+                label: 'Thống kê nơi cách ly',
+                data: Object.values(noiCLData),
+                backgroundColor: ["#db504a", "#e3b505", "#8896ab", "#084c61", "#4f6d7a", "#56a3a6"],
+                borderColor: '#fff',
+                borderRadius: 5,
+                borderWidth: 2
+            }]
         },
         options: {
             responsive: true,
@@ -112,14 +109,14 @@ fetch('/api/cach-ly/').then(res => res.json()).then(res => {
         type: 'pie',
         data: {
             labels: Object.keys(mucDoData),
-                datasets: [{
-                    label: 'Thống kê các mức độ',
-                    data: Object.values(mucDoData),
-                    backgroundColor: ["#333333","#643173","#7d5ba6","#86a59c","#89ce94","#c1dbe3"],
-                    borderColor: '#212529',
-                    borderRadius: 5,
-                    borderWidth: 2
-                }]
+            datasets: [{
+                label: 'Thống kê các mức độ',
+                data: Object.values(mucDoData),
+                backgroundColor: ["#333333", "#643173", "#7d5ba6", "#86a59c", "#89ce94", "#c1dbe3"],
+                borderColor: '#fff',
+                borderRadius: 5,
+                borderWidth: 2
+            }]
         },
         options: {
             responsive: true,

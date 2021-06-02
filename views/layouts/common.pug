@@ -26,19 +26,58 @@ html(lang="en")
                     button.btn-close(type='button' data-bs-dismiss='toast' aria-label='Close')
                 .toast-body#toastContent= messages.alert
         // nav
-        #nav
-            .logo
-                //- img(src='https://www.coronavirus.gov.hk/images/icon-7-ways.png')
-                i.fad.fa-virus-slash.text-white.mt-3(style="font-size: 4.8rem;")
-                .title
-                    h1 COVID-19 MANAGER APP
-            .log
-                a.btn.btn-tung.b2(href="/auth/logout") ĐĂNG XUẤT
-        .bar
-            .fun
-                a.btn.btn-tung(class=(mainPath=='dashboard'&&"btn-tung-hover") href="/dashboard") TRANG CHỦ
-            .fun
-                a.btn.btn-tung(class=(mainPath=='nhan-khau'&&"btn-tung-hover") href="/nhan-khau") NHÂN KHẨU
+        .navbar
+            .container-fluid.mb-3.mb-md-2
+                a.navbar-brand.text-white.fs-3.fs-md-1(href="/")
+                    i.fad.fa-virus-slash
+                    span     COVID-19 MANAGER APP
+                a.btn.btn-tung(href="/auth/logout")
+                    i.fas.fa-sign-out-alt
+                    span.d-none.d-md-inline   ĐĂNG XUẤT
+            .container-fluid
+                .d-flex.justify-content-around.w-100.flex-wrap
+                    .fun.mx-1.mb-1
+                        a.btn.btn-tung(class=(mainPath=='dashboard'&&"btn-tung-hover") href="/dashboard")
+                            i.d-inline.d-md-none.fas.fa-virus-slash
+                            span.d-none.d-md-inline TRANG CHỦ
+                    .fun.mx-1.mb-1
+                        a.btn.btn-tung(class=(mainPath=='nhan-khau'&&"btn-tung-hover") href="/nhan-khau")
+                            i.d-inline.d-md-none.fas.fa-users
+                            span.d-none.d-md-inline NHÂN KHẨU
+                    .fun.mx-1.mb-1
+                        a.btn.btn-tung(class=(mainPath=='ho-khau'&&"btn-tung-hover") href="/ho-khau")
+                            i.d-inline.d-md-none.fas.fa-house
+                            span.d-none.d-md-inline HỘ KHẨU
+                    .fun.mx-1.mb-1
+                        a.btn.btn-tung(class=(mainPath=='khai-bao'&&"btn-tung-hover") href="/khai-bao")
+                            i.d-inline.d-md-none.fas.fa-file-check
+                            span.d-none.d-md-inline KHAI BÁO
+                    .fun.mx-1.mb-1
+                        a.btn.btn-tung(class=(mainPath=='test-covid'&&"btn-tung-hover") href="/test-covid")
+                            i.d-inline.d-md-none.fas.fa-vials
+                            span.d-none.d-md-inline XÉT NGHIỆM
+                    .fun.mx-1.mb-1
+                        a.btn.btn-tung(class=(mainPath=='cach-ly'&&"btn-tung-hover") href="/cach-ly")
+                            i.d-inline.d-md-none.fas.fa-shield-virus
+                            span.d-none.d-md-inline CÁCH LY
+                    .fun.mx-1.mb-1
+                        a.btn.btn-tung(class=(mainPath=='thong-ke'&&"btn-tung-hover") href="/thong-ke")
+                            i.d-inline.d-md-none.fas.fa-chart-pie-alt
+                            span.d-none.d-md-inline THỐNG KÊ
+
+        //- #nav
+        //-     .logo
+        //-         //- img(src='https://www.coronavirus.gov.hk/images/icon-7-ways.png')
+        //-         i.fad.fa-virus-slash.text-white.mt-3(style="font-size: 4.8rem;")
+        //-         .title
+        //-             h1 COVID-19 MANAGER APP
+        //-     .log
+        //-         a.btn.btn-tung.b2(href="/auth/logout") ĐĂNG XUẤT
+        //- .bar
+        //-     .fun
+        //-         a.btn.btn-tung(class=(mainPath=='dashboard'&&"btn-tung-hover") href="/dashboard") TRANG CHỦ
+        //-     .fun
+        //-         a.btn.btn-tung(class=(mainPath=='nhan-khau'&&"btn-tung-hover") href="/nhan-khau") NHÂN KHẨU
             .fun
                 a.btn.btn-tung(class=(mainPath=='ho-khau'&&"btn-tung-hover") href="/ho-khau") HỘ KHẨU
             .fun

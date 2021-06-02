@@ -14,6 +14,7 @@ block content
             .form-div.mb-1
                 label.flabel.mb-1(for='cmt') Số CMT/CCCD
                 input.form-control(type='text' name='soCCCD' value=nhanKhau.soCCCD required)
+                small.form-text.text-white Nếu chưa có số CCCD/CMT thì điền số CCCD của chủ hộ + 2 chữ số cuối là thứ tự trong sổ hộ khẩu
             .form-div.mb-1
                 label.flabel.mb-1(for='birth') Ngày sinh
                 input.form-control(type='date' name='namSinh' value=nhanKhau.namSinh.toISOString().slice(0,10) required)

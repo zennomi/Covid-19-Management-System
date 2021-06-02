@@ -1,31 +1,32 @@
 extends ../layouts/common.pug
 
 block content 
-    form.mb-2
+    form.mb-2.container
         button.sbutton.btn.btn-tung.align-middle.me-2 Tìm kiếm
         input.me-2.sinput.align-middle.form-control.d-inline(type='text' onkeyup="searchTable(this, 'nhanKhauTable')")
         a.sbutton.btn.btn-tung(href="/cach-ly/them-moi") Thêm thông tin cách ly mới
-    .table-responsive.px-5
-        table.table.text-white#nhanKhauTable
-            tr.header.text-center
-                th Số CCCD/CMT
-                th Họ và tên
-                th Ngày sinh
-                th Giới tính
-                th Nơi cách ly
-                th Thời gian
-                th Mức độ
-            each cl in cachLys
-                tr.info
-                    td.align-middle= cl.nhanKhauId.soCCCD
-                    td.align-middle= cl.nhanKhauId.hoVaTen
-                    td.align-middle= cl.nhanKhauId.namSinh.toISOString().slice(0,10)
-                    td.align-middle= cl.nhanKhauId.gioiTinh
-                    td.align-middle= cl.noiCachLy
-                    td.align-middle= cl.thoiGian.toISOString().slice(0,10)
-                    td.align-middle= cl.mucDo
-                    td.align-middle
-                        .d-flex.justify-content-around
-                            a.d-block.btn.btn-secondary.me-1(href="/cach-ly/"+cl._id+"/cap-nhat") Sửa
-                            a.d-block.btn.btn-secondary.me-1(href="/cach-ly/"+cl._id+"/xoa") Xoá
+    .container
+        .table-responsive
+            table.table.text-white#nhanKhauTable
+                tr.header.text-center
+                    th Số CCCD/CMT
+                    th Họ và tên
+                    th Ngày sinh
+                    th Giới tính
+                    th Nơi cách ly
+                    th Thời gian
+                    th Mức độ
+                each cl in cachLys
+                    tr.info
+                        td.align-middle= cl.nhanKhauId.soCCCD
+                        td.align-middle= cl.nhanKhauId.hoVaTen
+                        td.align-middle= cl.nhanKhauId.namSinh.toISOString().slice(0,10)
+                        td.align-middle= cl.nhanKhauId.gioiTinh
+                        td.align-middle= cl.noiCachLy
+                        td.align-middle= cl.thoiGian.toISOString().slice(0,10)
+                        td.align-middle= cl.mucDo
+                        td.align-middle
+                            .d-flex.justify-content-around
+                                a.d-block.btn.btn-secondary.me-1(href="/cach-ly/"+cl._id+"/cap-nhat") Sửa
+                                a.d-block.btn.btn-secondary.me-1(href="/cach-ly/"+cl._id+"/xoa") Xoá
     script(src="/js/searching-table.js") 

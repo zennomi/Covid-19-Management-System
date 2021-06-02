@@ -65,6 +65,9 @@ module.exports = {
             return res.status(404).render('error', { err });
         }
         req.io.emit('test-covid:change', 1);
+        if (req.body.ketQua == 'DƯƠNG TÍNH') {
+            req.io.emit(encodeURI('test-covid?ketQua=DƯƠNG+TÍNH') + ':change', 1);
+        }
         res.redirect('/test-covid');
     },
     postUpdate: async(req, res) => {
@@ -75,6 +78,11 @@ module.exports = {
             if (!testCovid) throw Error("Not Found");
         } catch (err) {
             return res.render('error', { err });
+        }
+        if (req.body.ketQua == 'DƯƠNG TÍNH' && testCovid.ketQua != 'DƯƠNG TÍNH') {
+            req.io.emit(encodeURI('test-covid?ketQua=DƯƠNG+TÍNH') + ':change', 1);
+        } else if (req.body.ketQua != 'DƯƠNG TÍNH' && testCovid.ketQua == 'DƯƠNG TÍNH') {
+            req.io.emit(encodeURI('test-covid?ketQua=DƯƠNG+TÍNH') + ':change', -1);
         }
         testCovid.thoiDiemTest = reqBody.thoiDiemTest;
         testCovid.hinhThucTest = reqBody.hinhThucTest;
@@ -89,7 +97,11 @@ module.exports = {
     postDelete: async(req, res) => {
         TestCovid.findByIdAndDelete(req.params.id, (err, result) => {
             if (err) return res.render('error', { err });
+            console.log(result);
             req.io.emit('test-covid:change', -1);
+            if (result.ketQua == 'DƯƠNG TÍNH') {
+                req.io.emit(encodeURI('test-covid?ketQua=DƯƠNG+TÍNH') + ':change', -1);
+            }
             res.redirect('/test-covid');
         })
     }

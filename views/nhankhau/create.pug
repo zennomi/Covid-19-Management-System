@@ -13,7 +13,8 @@ block content
                 input.form-control(type='text' name='hoVaTen' required)
             .form-div.mb-2
                 label.flabel.mb-1(for='cmt') Số CMT/CCCD
-                input.form-control(type='text' name='soCCCD' required pattern='^\\d{9,12}$' title="Số CMT/CCCD phải có từ 9-12 chữ số")
+                input.form-control(type='text' name='soCCCD' required pattern='^\\d{9,15}$' title="Số CMT/CCCD phải có từ 9-12 chữ số")
+                small.form-text.text-white Nếu chưa có số CCCD/CMT thì điền số CCCD của chủ hộ + 2 chữ số cuối là thứ tự trong sổ hộ khẩu
             .form-div.mb-2
                 label.flabel.mb-1(for='birth') Ngày sinh
                 input.form-control(type='date' name='namSinh' required)
