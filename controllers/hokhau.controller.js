@@ -22,7 +22,7 @@ module.exports = {
         } catch (err) {
             return res.render('error', { err });
         }
-        res.render('hoKhau/update', { hoKhau });
+        res.render('hokhau/update', { hoKhau });
     },
     delete: async(req, res) => {
         let hoKhau;

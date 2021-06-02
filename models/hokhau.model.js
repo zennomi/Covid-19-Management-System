@@ -12,8 +12,7 @@ const hoKhauSchema = new mongoose.Schema({
     },
     chuHoKhauId: {
         type: mongoose.Types.ObjectId,
-        ref: 'NhanKhau',
-        unique: true
+        ref: 'NhanKhau'
     }
 })
 
