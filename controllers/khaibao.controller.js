@@ -12,7 +12,8 @@ module.exports = {
         res.render('khaibao/index', { khaiBaos });
     },
     create: (req, res) => {
-        res.render('khaibao/create');
+        let query = req.query || {};
+        res.render('khaibao/create', { query });
     },
     update: async(req, res) => {
         let khaiBao;

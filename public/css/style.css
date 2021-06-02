@@ -289,3 +289,7 @@ table {
 .btn {
     font-family: Quicksand;
 }
+
+a:hover {
+    color: #212529;
+}

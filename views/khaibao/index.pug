@@ -21,7 +21,8 @@ block content
             each kb in khaiBaos
                 tr.info
                     td.align-middle= kb.nhanKhauId.soCCCD
-                    td.align-middle= kb.nhanKhauId.hoVaTen
+                    td.align-middle
+                        a(href="/nhan-khau/" + kb.nhanKhauId._id + "/chi-tiet")= kb.nhanKhauId.hoVaTen
                     td.align-middle= kb.nhanKhauId.namSinh.toISOString().slice(0,10)
                     td.align-middle= kb.nhanKhauId.gioiTinh
                     td.align-middle= kb.ngayKhaiBao.toISOString().slice(0,10)

@@ -13,7 +13,7 @@ block content
                 input.form-control(type='text' name='hoVaTen' disabled)
             .form-div.mb-1
                 label.flabel.mb-1(for='cmt') Số CMT/CCCD
-                input#soCCCDInput.form-control(type='text' name='soCCCD' required)
+                input#soCCCDInput.form-control(type='text' name='soCCCD' required value=(query&&query.soCCCD))
             .form-div.mb-1
                 label.flabel.mb-1(for='birth') Ngày sinh
                 input.form-control(type='date' name='namSinh' disabled)

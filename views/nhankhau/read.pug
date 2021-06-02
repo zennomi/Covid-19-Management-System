@@ -13,18 +13,37 @@ block content
                             i.fad.fa-user-circle.fs-1
                             .mt-3
                                 .h3= nhanKhau.hoVaTen
-                                //- p.text-secondary.mb-1= nhanKhau.diaChi
-                                a.btn.btn-tung.btn-tung-hover.me-3(href="/nhan-khau/"+nhanKhau._id+"/cap-nhat") Cập nhật
-                                a.btn.btn-outline-danger(href="/nhan-khau/"+nhanKhau._id+"/xoa") Xoá
+                                //- p.text-dark.mb-1= nhanKhau.diaChi
+                                a.btn.btn-dark.me-3(href="/nhan-khau/"+nhanKhau._id+"/cap-nhat") Cập nhật
+                                if !cachLy
+                                    a.btn.btn-dark.me-3(href="/cach-ly/them-moi?soCCCD=" + nhanKhau.soCCCD)
+                                        | Cách ly
+                                a.btn.btn-danger.me-3(href="/nhan-khau/"+nhanKhau._id+"/xoa") Xoá
+                .card.mt-3 
+                    .card-body 
+                        .d-flex.justify-content-end.align-items-center
+                            .mx-auto.h4.text-center.fw-bold
+                                | Cùng hộ khẩu mã 
+                                .badge.bg-dark #{nhanKhau.hoKhauId.maHoKhau}
+                            if khaiBao
+                                a.btn.btn-sm.btn-dark(href="/khai-bao/" + khaiBao._id + "/cap-nhat")
+                                    i.fas.fa-pencil
+                        each nK in nhanKhau.hoKhauId.nhanKhau.filter(n => String(n._id) != nhanKhau._id)
+                            hr
+                            a.text-dark(href="/nhan-khau/" + nK._id + "/chi-tiet")
+                                | #{nK.hoVaTen} - #{nK.soCCCD}
                 if cachLy
-                    .card.mt-3
+                    .card.mt-3(class=(['F0', 'F1', 'F2'].includes(cachLy.mucDo) ? "bg-danger text-white" : ""))
                         .card-body
                             | Mức độ cách ly 
-                            .badge.bg-danger= cachLy.mucDo 
+                            .badge.bg-dark= cachLy.mucDo 
                             |  nên đã cách ly tại 
-                            .badge.bg-danger=cachLy.noiCachLy
+                            .badge.bg-dark=cachLy.noiCachLy
                             |  bắt đầu từ ngày 
-                            .badge.bg-danger=cachLy.thoiGian.toISOString().slice(0,10).split("-").reverse().join("/")
+                            .badge.bg-dark=cachLy.thoiGian.toISOString().slice(0,10).split("-").reverse().join("/")
+                            | . 
+                            a(href="/cach-ly/" + cachLy._id + "/cap-nhat")
+                                | Cập nhật
                             | .
                     //- ul.list-group.list-group-flush
                     //-     li.list-group-item.d-flex.justify-content-between.align-items-center.flex-wrap
@@ -34,7 +53,7 @@ block content
                     //-                 line(x1='2' y1='12' x2='22' y2='12')
                     //-                 path(d='M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z')
                     //-             | Website
-                    //-         span.text-secondary https://bootdey.com
+                    //-         span.text-dark https://bootdey.com
             .col-md-8
                 .row.gutters-sm
                     .col-md-6
@@ -65,7 +84,12 @@ block content
                                 .row
                                     .col-sm-4
                                         h6.mb-0.fw-bold Mã hộ khẩu
-                                    .col-sm-8= nhanKhau.hoKhauId.maHoKhau
+                                    .col-sm-8
+                                        if nhanKhau.hoKhauId
+                                            .d-flex
+                                                span= nhanKhau.hoKhauId.maHoKhau
+                                                a.ms-auto.btn.btn-dark.btn-sm(href="/ho-khau/" + nhanKhau.hoKhauId._id + "/cap-nhat")
+                                                    i.fas.fa-pencil
                                 hr
                                 .row
                                     .col-sm-4
@@ -81,11 +105,16 @@ block content
                                     .col-sm-4
                                         h6.mb-0.fw-bold Trạng Thái
                                     .col-sm-8= nhanKhau.trangThai
-                    if khaiBao
-                        .col-sm-12.mb-3
-                            .card.h-100
-                                .card-body
-                                    .h4.text-center.fw-bold Khai báo cách ly
+                    
+                    .col-sm-12.mb-3
+                        .card.h-100
+                            .card-body
+                                .d-flex.justify-content-end.align-items-center
+                                    .mx-auto.h4.text-center.fw-bold Khai báo dịch tễ
+                                    if khaiBao
+                                        a.btn.btn-sm.btn-dark(href="/khai-bao/" + khaiBao._id + "/cap-nhat")
+                                            i.fas.fa-pencil
+                                if khaiBao
                                     hr
                                     .row
                                         .col-sm-4
@@ -106,24 +135,35 @@ block content
                                         .col-sm-4
                                             h6.mb-0.fw-bold Bệnh nền
                                         .col-sm-8= khaiBao.benhNen.join("; ")
-                    each tc in testCovids
-                        .col-sm-6.mb-3
-                            .card.h-100
-                                .card-body
-                                    .h4.text-center.fw-bold Test Covid
-                                    hr
-                                    .row
-                                        .col-sm-4
-                                            h6.mb-0.fw-bold Thời điểm test
-                                        .col-sm-8= tc.thoiDiemTest.toLocaleString()
-                                    hr
-                                    .row
-                                        .col-sm-4
-                                            h6.mb-0.fw-bold Hình thức
-                                        .col-sm-8= tc.hinhThucTest
-                                    hr
-                                    .row
-                                        .col-sm-4
-                                            h6.mb-0.fw-bold Kết quả
-                                        .col-sm-8= tc.ketQua
+                                else 
+                                    .text-center
+                                        a.mx-auto.btn.btn-dark(href="/khai-bao/them-moi?soCCCD=" + nhanKhau.soCCCD)
+                                            i.fas.fa-plus-circle
+                                            |  Thêm khai báo dịch tễ
+                    .col-sm-12.mb-3
+                        .card.h-100
+                            .card-body
+                                .d-flex.justify-content-end.align-items-center
+                                        .mx-auto.h4.text-center.fw-bold Test Covid
+                                        a.btn.btn-dark.btn-sm(href="/test-covid/them-moi?soCCCD=" + nhanKhau.soCCCD)
+                                            i.fas.fa-plus-circle
+                                .row.g-1.gy-md-2
+                                    each tc in testCovids
+                                        a.col.col-6(href="/test-covid/" + tc._id + "/cap-nhat")
+                                            .card.bg-dark.text-white
+                                                .card-body
+                                                    .row
+                                                        .col-sm-4
+                                                            h6.mb-0.fw-bold Thời điểm test
+                                                        .col-sm-8= tc.thoiDiemTest.toLocaleString()
+                                                    hr
+                                                    .row
+                                                        .col-sm-4
+                                                            h6.mb-0.fw-bold Hình thức
+                                                        .col-sm-8= tc.hinhThucTest
+                                                    hr
+                                                    .row
+                                                        .col-sm-4
+                                                            h6.mb-0.fw-bold Kết quả
+                                                        .col-sm-8= tc.ketQua
                                     

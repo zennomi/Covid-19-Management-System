@@ -16,7 +16,9 @@ block content
                 each hk in hoKhaus
                     tr.info
                         td.text-center= hk.maHoKhau
-                        td= hk.chuHoKhauId && hk.chuHoKhauId.hoVaTen
+                        td
+                            if hk.chuHoKhauId
+                                a(href="/nhan-khau/" + hk.chuHoKhauId._id + "/chi-tiet")= hk.chuHoKhauId.hoVaTen
                         td.text-center.text-center= hk.nhanKhau.length
                         td
                             .d-flex.justify-content-around

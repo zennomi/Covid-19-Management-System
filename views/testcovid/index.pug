@@ -18,7 +18,8 @@ block content
             each tc in testCovids
                 tr.info
                     td.align-middle= tc.nhanKhauId.soCCCD
-                    td.align-middle= tc.nhanKhauId.hoVaTen
+                    td.align-middle
+                        a(href="/nhan-khau/" + tc.nhanKhauId._id + "/chi-tiet")= tc.nhanKhauId.hoVaTen
                     td.align-middle= tc.nhanKhauId.namSinh.toISOString().slice(0,10)
                     td.align-middle= tc.nhanKhauId.gioiTinh
                     td.align-middle= tc.thoiDiemTest.toLocaleString()

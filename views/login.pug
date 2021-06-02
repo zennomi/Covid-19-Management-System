@@ -9,6 +9,9 @@ head
 	link(rel='stylesheet' type='text/css' href='/css/login/Footer.css')
 	link(rel='stylesheet', type='text/css', href='//cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@8af0edd/css/all.css')
 	link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Quicksand')
+	include ./layouts/favicon
+	meta(property="og:description" content="Bài tập lớp KTPM bởi nhóm 2 - CovidHub")
+	meta(property="og:image" content="/assets/img/bg.jpg")
 body
 	.jumbotron.bg-cover.text-white.mb-0.rounded-0(style='height: 100vh; background: none;')
 		.container.py-1.text-center
@@ -41,6 +44,12 @@ body
 						if (messages.warning)
 							.group
 								.alert.alert-danger= messages.warning
+						.group 
+							input#check.check(type='checkbox' name="remember" checked)
+							label(for='check')
+								span.mr-2.icon
+								| Giữ đăng nhập 7 ngày
+
 						.group
 							input.button.quicksand(type='submit' value='Đăng nhập')
 				//- .sign-up-htm
@@ -59,8 +68,8 @@ body
 				//- 	.group
 				//- 		input.button(type='submit' value='Sign Up')
 				//- 	.hr
-				//- 	.foot-lnk
-				//- 		label(for='tab-1') Already Member?
+					//- .foot-lnk
+					//- 	label(for='tab-1') Already Member?
 
 	footer.site-footer
 		.container

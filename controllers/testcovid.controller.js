@@ -12,7 +12,8 @@ module.exports = {
         res.render('testcovid/index', { testCovids });
     },
     create: (req, res) => {
-        res.render('testcovid/create');
+        let query = req.query || {};
+        res.render('testcovid/create', { query });
     },
     update: async(req, res) => {
         let testCovid;

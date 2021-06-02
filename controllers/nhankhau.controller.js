@@ -34,7 +34,7 @@ module.exports = {
     read: async(req, res) => {
         let nhanKhau, khaiBao, cachLy, testCovids;
         try {
-            nhanKhau = await NhanKhau.findById(req.params.id).populate('hoKhauId');
+            nhanKhau = await NhanKhau.findById(req.params.id).populate({ path: 'hoKhauId', populate: 'nhanKhau' });
             khaiBao = await KhaiBao.findOne({ nhanKhauId: req.params.id });
             cachLy = await CachLy.findOne({ nhanKhauId: req.params.id });
             testCovids = await TestCovid.find({ nhanKhauId: req.params.id });

@@ -29,7 +29,7 @@ block content
                 input.form-control(type='text' name='soDienThoai'  pattern='^\\d{9,10}$' value=nhanKhau.soDienThoai)
             .form-div.mb-1
                 label.flabel.mb-1() Mã hộ khẩu
-                input.form-control(type='text' name='maHoKhau' value=nhanKhau.maHoKhau required  pattern='^[A-Za-z0-9]{0,}' title='Chỉ chứa các ký tự chữ thường và chữ số')
+                input.form-control(type='text' name='maHoKhau' value=nhanKhau.hoKhauId.maHoKhau required  pattern='^[A-Za-z0-9]{0,}' title='Chỉ chứa các ký tự chữ thường và chữ số')
             .form-div.mb-2
                 label.flabel.mb-1(for='sex') Trạng thái
                 select.form-select(name='trangThai')

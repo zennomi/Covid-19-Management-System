@@ -105,7 +105,9 @@ app.post('/auth/login', async(req, res) => {
         return res.redirect('/auth/login/#login');
     }
     req.flash('alert', 'Đăng nhập thành công với tài khoản ' + username + '.');
-    res.cookie('isLogged', true, { expires: new Date(Date.now() + 7 * 24 * 3600 * 1000), httpOnly: true });
+    if (req.body.remember)
+        res.cookie('isLogged', true, { expires: new Date(Date.now() + 7 * 24 * 3600 * 1000), httpOnly: true });
+    else res.cookie('isLogged', true, { httpOnly: true });
     res.redirect('/dashboard');
 })
 

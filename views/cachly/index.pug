@@ -19,7 +19,8 @@ block content
                 each cl in cachLys
                     tr.info
                         td.align-middle= cl.nhanKhauId.soCCCD
-                        td.align-middle= cl.nhanKhauId.hoVaTen
+                        td.align-middle
+                            a(href="/nhan-khau/" + cl.nhanKhauId._id + "/chi-tiet")= cl.nhanKhauId.hoVaTen
                         td.align-middle= cl.nhanKhauId.namSinh.toISOString().slice(0,10)
                         td.align-middle= cl.nhanKhauId.gioiTinh
                         td.align-middle= cl.noiCachLy

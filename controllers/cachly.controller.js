@@ -12,7 +12,8 @@ module.exports = {
         res.render('cachly/index', { cachLys });
     },
     create: (req, res) => {
-        res.render('cachly/create');
+        let query = req.query || {};
+        res.render('cachly/create', { query });
     },
     update: async(req, res) => {
         let cachLy;
