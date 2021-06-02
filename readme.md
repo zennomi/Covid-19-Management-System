@@ -3,6 +3,7 @@
 ## _Hệ thống quản lý dịch tễ Covid-19 trên địa bàn by Covid Hub Team_
   [![NPM Version][npm-image]][npm-url]
 
+✨ [Link Demo](https://covid-19-management-app.herokuapp.com/) ✨
 
 
 COVID19 ANTI HUB là một nhóm được thành lập ngay sau khi thầy Nhật Hoá học phần Công Nghệ Phần Mềm giao giao bài tập lớn, mục tiêu nhóm là xây dựng một web app quản lý dịch tễ covid. Nhóm đã trải qua rất nhiều khủng hoảng về tinh thần, suy nghĩ về cuộc đời, về môn học nặng 2 tín này, nhưng thật may mắn là mình đang viết dòng này sau khi đã code xong 80% cái web và ngày mai là ngày nộp báo cáo. Thôi viết thế đủ kín khung này rồi, mọi người nhớ chú ý và tự bảo vệ mình trong đợt dịch nha  ༼ つ ◕_◕ ༽つ❤ 
