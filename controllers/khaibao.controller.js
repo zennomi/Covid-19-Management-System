@@ -88,6 +88,7 @@ module.exports = {
         } catch (err) {
             return res.render('error', { err });
         }
+        req.io.emit('khai-bao:change', 0);
         res.redirect('/khai-bao')
     },
     postDelete: async(req, res) => {

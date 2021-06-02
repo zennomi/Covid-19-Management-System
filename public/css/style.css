@@ -178,7 +178,6 @@ a {
 }
 
 .fun .btn-tung {
-    height: 40px;
     min-width: 140px;
     /* box-shadow: 0 0 10px 5px gray inset; */
     font-size: 20px;
@@ -191,6 +190,7 @@ a {
         min-width: 0;
     }
     .fun .btn-tung {
+        padding: 10px;
         min-width: 50px;
     }
 }

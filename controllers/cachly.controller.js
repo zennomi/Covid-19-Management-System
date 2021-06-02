@@ -84,6 +84,7 @@ module.exports = {
         } catch (err) {
             return res.render('error', { err });
         }
+        req.io.emit('cach-ly:change', 0);
         res.redirect('/cach-ly')
     },
     postDelete: async(req, res) => {

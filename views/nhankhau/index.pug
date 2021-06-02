@@ -1,15 +1,10 @@
 extends ../layouts/common.pug
 
 block content
-    if query.maHoKhau
-        .h3.ms-5.text-white.quicksand.fw-bold Nhân khẩu thuộc hộ khẩu mã #{query.maHoKhau}
     form.mb-2.container
         button.sbutton.btn.btn-tung.align-middle.me-2 Tìm kiếm
         input.me-2.sinput.align-middle.form-control.d-inline(type='text' onkeyup="searchTable(this, 'nhanKhauTable')")
-        if query.maHoKhau
-            a.sbutton.btn.btn-tung(href="/nhan-khau/them-moi?maHoKhau="+query.maHoKhau) Thêm nhân khẩu mới vào hộ này
-        else
-            a.sbutton.btn.btn-tung(href="/nhan-khau/them-moi") Thêm nhân khẩu mới
+        a.sbutton.btn.btn-tung(href="/nhan-khau/them-moi") Thêm nhân khẩu mới
     .container
         .table-responsive
             table.table.text-white#nhanKhauTable

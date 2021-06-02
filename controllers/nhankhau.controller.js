@@ -8,7 +8,7 @@ let io = require('../index').io;
 
 module.exports = {
     index: async(req, res) => {
-        let query = req.body.query || {};
+        let query = req.query || {};
         let nhanKhaus;
         try {
             nhanKhaus = await NhanKhau.find(query).populate('hoKhauId');

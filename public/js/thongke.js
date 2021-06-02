@@ -1,4 +1,10 @@
-fetch('/api/khai-bao/').then(res => res.json()).then(res => {
+async function fetchAndHandle(path, handle) {
+    fetch(path).then(res => res.json()).then(res => {
+        handle(res);
+    })
+}
+
+fetchAndHandle('/api/khai-bao/', (res) => {
     let bieuHienData = {};
     res.result.forEach(cl => {
         cl.bieuHien.forEach(bh => {
@@ -6,7 +12,15 @@ fetch('/api/khai-bao/').then(res => res.json()).then(res => {
             bieuHienData[bh]++;
         })
     })
-    new Chart(
+    let benhNenData = {};
+    res.result.forEach(cl => {
+        cl.benhNen.forEach(bh => {
+            if (!benhNenData[bh]) benhNenData[bh] = 0;
+            benhNenData[bh]++;
+        })
+    })
+    let delayed1, delayed2;
+    var bieuHienChart = new Chart(
         document.getElementById('bieuHienChart'), {
             type: 'bar',
             data: {
@@ -21,6 +35,18 @@ fetch('/api/khai-bao/').then(res => res.json()).then(res => {
                 }]
             },
             options: {
+                animation: {
+                    onComplete: () => {
+                        delayed = true;
+                    },
+                    delay: (context) => {
+                        let delay = 0;
+                        if (context.type === 'data' && context.mode === 'default' && !delayed1) {
+                            delay = context.dataIndex * 300 + context.datasetIndex * 100;
+                        }
+                        return delay;
+                    },
+                },
                 scales: {
                     y: {
                         beginAtZero: true,
@@ -33,14 +59,7 @@ fetch('/api/khai-bao/').then(res => res.json()).then(res => {
             },
         }
     );
-    let benhNenData = {};
-    res.result.forEach(cl => {
-        cl.benhNen.forEach(bh => {
-            if (!benhNenData[bh]) benhNenData[bh] = 0;
-            benhNenData[bh]++;
-        })
-    })
-    new Chart(
+    var benhNenChart = new Chart(
         document.getElementById('benhNenChart'), {
             type: 'bar',
             data: {
@@ -55,6 +74,18 @@ fetch('/api/khai-bao/').then(res => res.json()).then(res => {
                 }]
             },
             options: {
+                animation: {
+                    onComplete: () => {
+                        delayed = true;
+                    },
+                    delay: (context) => {
+                        let delay = 0;
+                        if (context.type === 'data' && context.mode === 'default' && !delayed2) {
+                            delay = context.dataIndex * 300 + context.datasetIndex * 100;
+                        }
+                        return delay;
+                    },
+                },
                 scales: {
                     y: {
                         beginAtZero: true,
@@ -67,10 +98,49 @@ fetch('/api/khai-bao/').then(res => res.json()).then(res => {
             },
         }
     );
+    socket.on('khai-bao:change', () => {
+        fetchAndHandle('/api/khai-bao/', (res) => {
+            bieuHienData = {};
+            res.result.forEach(cl => {
+                cl.bieuHien.forEach(bh => {
+                    if (!bieuHienData[bh]) bieuHienData[bh] = 0;
+                    bieuHienData[bh]++;
+                })
+            })
+            benhNenData = {};
+            res.result.forEach(cl => {
+                cl.benhNen.forEach(bh => {
+                    if (!benhNenData[bh]) benhNenData[bh] = 0;
+                    benhNenData[bh]++;
+                })
+            })
+
+            bieuHienChart.data.labels = Object.keys(bieuHienData);
+            bieuHienChart.data.datasets[0] = {
+                label: 'Thống kê các biểu hiện',
+                data: Object.values(bieuHienData),
+                backgroundColor: '#999da3',
+                borderColor: '#212529',
+                borderRadius: 5,
+                borderWidth: 2
+            };
+            bieuHienChart.update();
+
+            benhNenChart.data.labels = Object.keys(benhNenData);
+            benhNenChart.data.datasets[0] = {
+                label: 'Thống kê các biểu hiện',
+                data: Object.values(benhNenData),
+                backgroundColor: '#999da3',
+                borderColor: '#212529',
+                borderRadius: 5,
+                borderWidth: 2
+            };
+            benhNenChart.update();
+        })
+    })
 })
 
-
-fetch('/api/cach-ly/').then(res => res.json()).then(res => {
+fetchAndHandle('/api/cach-ly/', (res) => {
     let noiCLData = {};
     let mucDoData = { 'F0': 0, 'F1': 0, 'F2': 0, 'F3': 0, 'F4': 0, 'F5': 0 };
     res.result.forEach(cl => {
@@ -79,7 +149,7 @@ fetch('/api/cach-ly/').then(res => res.json()).then(res => {
         noiCLData[cl.noiCachLy]++;
         mucDoData[cl.mucDo]++;
     })
-    new Chart(document.getElementById('noiCachLyChart'), {
+    var noiCachLyChart = new Chart(document.getElementById('noiCachLyChart'), {
         type: 'pie',
         data: {
             labels: Object.keys(noiCLData),
@@ -105,7 +175,7 @@ fetch('/api/cach-ly/').then(res => res.json()).then(res => {
             }
         },
     })
-    new Chart(document.getElementById('mucDoChart'), {
+    var mucDoChart = new Chart(document.getElementById('mucDoChart'), {
         type: 'pie',
         data: {
             labels: Object.keys(mucDoData),
@@ -130,5 +200,23 @@ fetch('/api/cach-ly/').then(res => res.json()).then(res => {
                 }
             }
         },
+    })
+    socket.on('cach-ly:change', () => {
+        fetchAndHandle('/api/cach-ly', (res) => {
+            noiCLData = {};
+            mucDoData = { 'F0': 0, 'F1': 0, 'F2': 0, 'F3': 0, 'F4': 0, 'F5': 0 };
+            res.result.forEach(cl => {
+                cl.noiCachLy = cl.noiCachLy.toUpperCase().trim();
+                if (!noiCLData[cl.noiCachLy]) noiCLData[cl.noiCachLy] = 0;
+                noiCLData[cl.noiCachLy]++;
+                mucDoData[cl.mucDo]++;
+            })
+            mucDoChart.data.datasets[0].data = Object.values(mucDoData);
+            mucDoChart.update();
+
+            noiCachLyChart.data.labels = Object.keys(noiCLData);
+            noiCachLyChart.data.datasets[0].data = Object.values(noiCLData);
+            noiCachLyChart.update();
+        })
     })
 })
