@@ -13,4 +13,3 @@ router.post('/:id/cap-nhat', controller.postUpdate);
 router.post('/:id/xoa', controller.postDelete);
 
 module.exports = router;
-

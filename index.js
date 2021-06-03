@@ -37,6 +37,8 @@ const cachLyApiRoutes = require('./api/routes/cachly.api.route');
 const testCovidApiRoutes = require('./api/routes/testcovid.api.route');
 const hoKhauApiRoutes = require('./api/routes/hokhau.api.route');
 
+const authMiddleWare = require('./middlewares/auth.middleware');
+
 const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
@@ -57,6 +59,8 @@ app.use(session({
 
 app.use(require('express-flash')());
 
+// app.use('/api', authMiddleWare.loggedApiRequire);
+
 app.use('/api/nhan-khau', nhanKhauApiRoutes);
 app.use('/api/khai-bao', khaiBaoApiRoutes);
 app.use('/api/cach-ly', cachLyApiRoutes);
@@ -68,22 +72,28 @@ app.use((req, res, next) => {
     req.io = io;
     // redirect when not logged yet
     res.locals.mainPath = req.path.split("/")[1];
-    if (!req.cookies.isLogged && req.path != '/auth/login' && req.path != '/') {
-        return res.redirect('/');
-    }
-    if (req.cookies.isLogged && req.path == '/') return res.redirect('/dashboard');
     next();
 })
+
+app.get('/dashboard', (req, res) => {
+    res.render('dashboard');
+})
+
+app.get('/thong-ke', (req, res) => {
+    res.render('thongke');
+});
+
+app.use(authMiddleWare.loggedRequire);
+
+app.get('/', (req, res) => {
+    res.render('login');
+});
 
 app.use('/nhan-khau', nhanKhauRoutes);
 app.use('/khai-bao', khaiBaoRoutes);
 app.use('/cach-ly', cachLyRoutes);
 app.use('/test-covid', testCovidRoutes);
 app.use('/ho-khau', hoKhauRoutes);
-
-app.get('/', (req, res) => {
-    res.render('login');
-});
 
 app.post('/auth/login', async(req, res) => {
     let { username, password } = req.body;
@@ -114,14 +124,6 @@ app.post('/auth/login', async(req, res) => {
 app.get('/auth/logout', (req, res) => {
     res.clearCookie('isLogged');
     res.redirect('/');
-})
-
-app.get('/dashboard', (req, res) => {
-    res.render('dashboard');
-})
-
-app.get('/thong-ke', (req, res) => {
-    res.render('thongke');
 })
 
 server.listen(port, () => {

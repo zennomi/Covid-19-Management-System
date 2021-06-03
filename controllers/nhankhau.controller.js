@@ -100,15 +100,21 @@ module.exports = {
         res.redirect('/nhan-khau/');
     },
     postDelete: async(req, res) => {
+        let deletedNK, deletedKB, deletedCL, deletedTC, deletedDT;
         try {
-            await NhanKhau.findByIdAndDelete(req.params.id);
-            await KhaiBao.deleteMany({ nhanKhauId: req.params.id });
-            await CachLy.deleteMany({ nhanKhauId: req.params.id });
-            await TestCovid.deleteMany({ nhanKhauId: req.params.id });
+            deletedDT = await TestCovid.find({ nhanKhauId: req.params.id, ketQua: 'DƯƠNG TÍNH' });
+            deletedNK = await NhanKhau.findByIdAndDelete(req.params.id);
+            deletedKB = await KhaiBao.deleteMany({ nhanKhauId: req.params.id });
+            deletedCL = await CachLy.deleteMany({ nhanKhauId: req.params.id });
+            deletedTC = await TestCovid.deleteMany({ nhanKhauId: req.params.id });
         } catch (err) {
             return res.render('error', { err });
         }
-        req.io.emit('nhan-khau:change', -1);
+        if (deletedNK) req.io.emit('nhan-khau:change', -1);
+        req.io.emit(encodeURI('test-covid?ketQua=DƯƠNG+TÍNH') + ':change', -1 * deletedDT.length);
+        req.io.emit('khai-bao:change', -1 * deletedKB.deletedCount);
+        req.io.emit('cach-ly:change', -1 * deletedKB.deletedCount);
+        req.io.emit('test-covid:change', -1 * deletedKB.deletedCount);
         req.flash('alert', `Xoá một nhân khẩu thành công.`);
         res.redirect('/nhan-khau/');
     }
