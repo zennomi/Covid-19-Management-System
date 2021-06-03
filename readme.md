@@ -14,16 +14,24 @@ COVID19 ANTI HUB là một nhóm được thành lập ngay sau khi thầy Nhậ
 - Quản lý khai báo của nhân khẩu trên địa bàn 👌.
 - Quản lý tình hình cách ly, xét nghiệm của nhân khẩu trên địa bàn 👌.
 - Thống kê dữ liệu khai báo, cách ly 👌.
+- Cập nhật realtime số liệu, đồ thị 🎉.
+- Cung cấp API đầy đủ 💡.
+
+## Future features
+- Cải thiện UX 🎨.
+- Responsive với các route thêm mới, cập nhật.
+- Tăng bảo mật, phân quyền.
 
 ## Tech
 
 Covid-19 Management System uses a number of open source projects to work properly:
 
-
-- [Bootstrap] - great UI boilerplate for modern web apps
-- [node.js] - for the backend
-- [Express] - fast node.js network app framework
-- [pug] - template engine
+- [Bootstrap] - great UI boilerplate for modern web apps.
+- [node.js] - for the backend.
+- [Express] - fast node.js network app framework.
+- [MongoDB] - document database.
+- [pug] - template engine.
+- [socketio] - real-time, bidirectional and event-based communication.
 
 And of course Covid-19 Management System itself is open source with a [public repository][cms]
  on GitHub.
@@ -75,4 +83,6 @@ Ok goy done nha (❁´◡`❁)
 
 [npm-image]: https://img.shields.io/npm/v/express.svg
 [npm-url]: https://npmjs.org/package/express
+[MongoDB]: https://www.mongodb.com/
 [coveralls-url]: https://coveralls.io/r/expressjs/express?branch=master
+[socketio]: https://socket.io/

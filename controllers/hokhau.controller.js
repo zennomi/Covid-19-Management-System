@@ -58,11 +58,15 @@ module.exports = {
         let hoKhau;
         try {
             hoKhau = await HoKhau.findById(req.params.id).populate('nhanKhau');
-            if (hoKhau.nhanKhau.length > 0) throw "Hộ khẩu chứa nhân khẩu không thể xoá";
+            if (hoKhau.nhanKhau.length > 0) {
+                throw "Hộ khẩu chứa nhân khẩu không thể xoá";
+            } else {
+                await HoKhau.findByIdAndDelete(req.params.id);
+                req.io.emit('ho-khau:change', -1);
+            }
         } catch (err) {
             return res.render('error', { err });
         }
-        req.io.emit('ho-khau:change', -1);
         req.flash('alert', `Xoá một nhân khẩu thành công.`);
         res.redirect('/ho-khau/');
     }
